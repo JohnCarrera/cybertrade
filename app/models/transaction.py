@@ -9,8 +9,8 @@ class Stock(db.Model):
     purchase_price = db.Column(db.Float, nullable=True)
     quantity = db.Column(db.Integer, nullable = False)
 
-    user = db.relationship("User", back_populates="transactions")
-    stock = db.relationship("Stock", back_populates="transactions")
+    user = db.relationship("User", back_populates="transaction")
+    stock = db.relationship("Stock", back_populates="transaction")
 
     def to_dict(self):
         return {

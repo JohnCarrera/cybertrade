@@ -10,8 +10,8 @@ class Stock(db.Model):
     value = db.Column(db.Float, nullable=True)
     quantity = db.Column(db.Integer, nullable = False)
 
-    user = db.relationship("User", back_populates="assets")
-    stock = db.relationship("Stock", back_populates="assets")
+    user = db.relationship("User", back_populates="asset")
+    stock = db.relationship("Stock", back_populates="asset")
 
     def to_dict(self):
         return {

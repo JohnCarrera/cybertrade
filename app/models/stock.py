@@ -8,6 +8,13 @@ class Stock(db.Model):
     industry = db.Column(db.String(50), nullable=False)
     market_cap = db.Column(db.Float, nullable = False)
 
+    watchlist = db.relationship("Watchlist", secondary=watchlist_stocks back_populates="stock")
+    asset = db.relationship("Asset", secondary=watchlist_stocks back_populates="stock")
+    transaction = db.relationship("Transaction", back_populates="stock")
+    note = db.relationship("Note", back_populates="stock")
+    order = db.relationship("Order", back_populates="stock")
+
+
     def to_dict(self):
         return {
             'id': self.id,
