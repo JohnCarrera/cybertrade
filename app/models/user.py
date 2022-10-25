@@ -8,13 +8,13 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    first_name = db.Column(db.String(255) nullable=False)
-    last_name = db.Column(db.String(255) nullable=False)
+    first_name = db.Column(db.String(255), nullable=False)
+    last_name = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
 
-    watchlist = db.relationship("Watchlist", secondary=watchlist_stocks back_populates="user")
-    asset = db.relationship("Asset", secondary=watchlist_stocks back_populates="user")
+    watchlist = db.relationship("Watchlist", back_populates="user")
+    asset = db.relationship("Asset", back_populates="user")
     transaction = db.relationship("Transaction", back_populates="user")
     note = db.relationship("Note", back_populates="user")
     order = db.relationship("Order", back_populates="user")

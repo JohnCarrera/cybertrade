@@ -1,11 +1,11 @@
 from .db import db
 
-class Stock(db.Model):
+class Asset(db.Model):
     __tablename__ = "assets"
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    symbol = db.Column(db.String(6), db.ForeignKey("stocks.id") nullable=False)
+    symbol = db.Column(db.String(6), db.ForeignKey("stocks.id"), nullable=False)
     type = db.Column(db.String(50), nullable=False)
     value = db.Column(db.Float, nullable=True)
     quantity = db.Column(db.Integer, nullable = False)
