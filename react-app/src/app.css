@@ -1,0 +1,59 @@
+
+* {
+    margin: 0;
+    font-family: 'Share Tech Mono', monospace;;
+}
+
+*:focus {
+    outline:none;
+}
+
+
+
+.stock-chart{
+    width: 200px;
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid grey;
+}
+
+.stock-element{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30px;
+}
+
+.stock-symbol{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:50%;
+    height:100%;
+    border: 1px solid grey;
+}
+
+.stock-price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:50%;
+    height:100%;
+    border: 1px solid grey;
+}
+
+.main-body{
+    height:fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.upper{
+    height:fit-content;
+    width: fit-content;
+    border: 1px solid lemonchiffon
+}

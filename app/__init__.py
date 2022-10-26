@@ -91,36 +91,36 @@ def inject_csrf_token(response):
 def start_stream():
     global stock_prices
     stock_prices = {
-                "AMZN": 0.00,
-                "NFLX": 0.00,
-                "GOOG": 0.00,
-                "MSFT": 0.00,
-                "TSLA": 0.00,
-                "META": 0.00,
-                "NVDA": 0.00,
-                "ORCL": 0.00,
-                "CSCO": 0.00,
-                "CRM": 0.00,
-                "ADBE": 0.00,
-                "QCOM": 0.00,
-                "IBM": 0.00,
-                "INTC": 0.00,
-                "PYPL": 0.00,
-                "AMD": 0.00,
-                "SONY": 0.00,
-                "ABNB": 0.00,
-                "MU": 0.00,
-                "TEAM": 0.00,
-                "VMW": 0.00,
-                "ATVI": 0.00,
-                "UBER": 0.00,
-                "ADSK": 0.00,
-                "ZM": 0.00,
-                "DELL": 0.00,
-                "EA": 0.00,
-                "TWTR": 0.00,
-                "SNOW": 0.00,
-                "TXN": 0.00,
+                "AMZN":{ "symbol": "AMZN", "price":0.00},
+                "NFLX":{ "symbol": "NFLX", "price":0.00},
+                "GOOG":{ "symbol": "GOOG", "price":0.00},
+                "MSFT":{ "symbol": "MSFT", "price":0.00},
+                "TSLA":{ "symbol": "TSLA", "price":0.00},
+                "META":{ "symbol": "META", "price":0.00},
+                "NVDA":{ "symbol": "NVDA", "price":0.00},
+                "ORCL":{ "symbol": "ORCL", "price":0.00},
+                "CSCO":{ "symbol": "CSCO", "price":0.00},
+                "CRM": { "symbol": "CRM", "price":0.00},
+                "ADBE":{ "symbol": "ADBE", "price":0.00},
+                "QCOM":{ "symbol": "QCOM", "price":0.00},
+                "IBM": { "symbol": "IBM", "price":0.00},
+                "INTC":{ "symbol": "INTC", "price":0.00},
+                "PYPL":{ "symbol": "PYPL", "price":0.00},
+                "AMD": { "symbol": "AMD", "price":0.00},
+                "SONY":{ "symbol": "SONY", "price":0.00},
+                "ABNB":{ "symbol": "ABNB", "price":0.00},
+                "MU":  { "symbol": "MU", "price":0.00},
+                "TEAM":{ "symbol": "TEAM", "price":0.00},
+                "VMW": { "symbol": "VMW", "price":0.00},
+                "ATVI":{ "symbol": "ATVI", "price":0.00},
+                "UBER":{ "symbol": "UBER", "price":0.00},
+                "ADSK":{ "symbol": "ADSK", "price":0.00},
+                "ZM":  { "symbol": "ZM", "price":0.00},
+                "DELL":{ "symbol": "DELL", "price":0.00},
+                "EA":  { "symbol": "EA", "price":0.00},
+                "TWTR":{ "symbol": "TWTR", "price":0.00},
+                "SNOW":{ "symbol": "SNOW", "price":0.00},
+                "TXN": { "symbol": "TXN", "price":0.00},
     }
 
     alpaca_login = '{"action": "auth", "key": "CKASOG6G35Y9RQTRX0HZ", "secret": "Svi5m9AFJnP0I4U3d1g6NdOVb8RUgKu6fbRbiLb7"}'
@@ -149,13 +149,14 @@ def start_stream():
         data = dict()
 
         def on_message(ws, message):
+            print(message)
             global stock_prices
         # print(f'on-message: {message}')
             if (connected):
                 data = json.loads(message)
                 for stock in data:
                     # print(stock)
-                    stock_prices[stock['S']] = stock['bp']
+                    stock_prices[stock['S']]['price'] = stock['bp']
                     # print(stock_prices)
 
 # websocket.enableTrace(True)
@@ -170,7 +171,7 @@ def start_stream():
 
     ds_thread = Thread(target=data_stream)
     ds_thread.start()
-    return('data stream thread started')
+    return({'msg': 'data stream started'})
 
 
 @app.route('/data', methods=['GET'])
@@ -180,7 +181,7 @@ def stock_data():
     if('stock_prices' in globals()):
         return(stock_prices)
     else:
-        return ('no stock data')
+        return (({'msg': 'no stock data'}, 400))
 
 
 
