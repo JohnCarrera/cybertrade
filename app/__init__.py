@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, g
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -17,67 +17,22 @@ from .seeds import seed_commands
 
 from .config import Config
 
-import socket
-from _thread import *
-import threading
+# import socket
+# from _thread import *
+# import threading
 
-print_lock = threading.Lock()
-
-alpaca_connected = True
-
-def threaded(c):
-
-    print('threaded...')
-
-    while alpaca_connected:
-        data = c.recv(1024)
-        if not data:
-            print('Bye')
-
-            # lock released on exit
-            print_lock.release()
-            break
-
-        # reverse the given string from client
-        data = data[::-1]
-
-        # send back reversed string to client
-        c.send(data)
-
-    # connection closed
-    c.close()
-
-
-
-host = ""
-    # reserve a port on your computer
-    # in our case it is 12345 but it
-    # can be anything
-port = 443
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((host, port))
-print("socket binded to port", port)
-
-# put the socket into listening mode
-s.listen(5)
-print("socket is listening")
-
-# a forever loop until client wants to exit
-while True:
-
-    # establish connection with client
-    c, addr = s.accept()
-
-    # lock acquired by client
-    print_lock.acquire()
-    print('Connected to :', addr[0], ':', addr[1])
-
-    # Start a new thread and return its identifier
-    start_new_thread(threaded, (c,))
-s.close()
-
+import websocket
+import _thread
+import time
+import rel
+import json
+from threading import Thread
 
 app = Flask(__name__)
+
+
+
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -130,6 +85,103 @@ def inject_csrf_token(response):
             'FLASK_ENV') == 'production' else None,
         httponly=True)
     return response
+
+
+@app.route('/start-stream', methods=['GET'])
+def start_stream():
+    global stock_prices
+    stock_prices = {
+                "AMZN": 0.00,
+                "NFLX": 0.00,
+                "GOOG": 0.00,
+                "MSFT": 0.00,
+                "TSLA": 0.00,
+                "META": 0.00,
+                "NVDA": 0.00,
+                "ORCL": 0.00,
+                "CSCO": 0.00,
+                "CRM": 0.00,
+                "ADBE": 0.00,
+                "QCOM": 0.00,
+                "IBM": 0.00,
+                "INTC": 0.00,
+                "PYPL": 0.00,
+                "AMD": 0.00,
+                "SONY": 0.00,
+                "ABNB": 0.00,
+                "MU": 0.00,
+                "TEAM": 0.00,
+                "VMW": 0.00,
+                "ATVI": 0.00,
+                "UBER": 0.00,
+                "ADSK": 0.00,
+                "ZM": 0.00,
+                "DELL": 0.00,
+                "EA": 0.00,
+                "TWTR": 0.00,
+                "SNOW": 0.00,
+                "TXN": 0.00,
+    }
+
+    alpaca_login = '{"action": "auth", "key": "CKASOG6G35Y9RQTRX0HZ", "secret": "Svi5m9AFJnP0I4U3d1g6NdOVb8RUgKu6fbRbiLb7"}'
+    alpaca_sub = '{"action":"subscribe","quotes":["AMZN", "NFLX", "GOOG", "MSFT", "TSLA", "META", "NVDA", "ORCL", "CSCO", "CRM", "ADBE", "QCOM", "IBM", "INTC", "PYPL", "AMD", "SONY", "ABNB", "MU", "TEAM", "VMW", "ATVI", "UBER", "ADSK", "ZM", "DELL", "EA", "TWTR",  "SNOW", "TXN"]}'
+    # data = message
+    # dataDict = json.loads(data)[0]
+    # print(f'dict: {dataDict}')
+
+    # if(dataDict['msg'] == 'connected'):
+        # print('read connected from msg')
+
+    def on_error(ws, error):
+        print(f'on-error: {error}')
+
+    def on_close(ws, close_status_code, close_msg):
+        print("### closed ###")
+
+    def on_open(ws):
+        print("Opened connection")
+        ws.send(alpaca_login)
+        ws.send(alpaca_sub)
+        connected = True
+
+    def data_stream():
+        connected = True
+        data = dict()
+
+        def on_message(ws, message):
+            global stock_prices
+        # print(f'on-message: {message}')
+            if (connected):
+                data = json.loads(message)
+                for stock in data:
+                    # print(stock)
+                    stock_prices[stock['S']] = stock['bp']
+                    # print(stock_prices)
+
+# websocket.enableTrace(True)
+        ws = websocket.WebSocketApp("wss://stream.data.sandbox.alpaca.markets/v2/iex",
+                                on_open=on_open,
+                                on_message=on_message,
+                                on_error=on_error,
+                                on_close=on_close)
+        ws.run_forever()  # Set dispatcher to automatic reconnection
+        # rel.signal(2, rel.abort)  # Keyboard Interrupt
+        # rel.dispatch()
+
+    ds_thread = Thread(target=data_stream)
+    ds_thread.start()
+    return('data stream thread started')
+
+
+@app.route('/data', methods=['GET'])
+def stock_data():
+    global stock_prices
+    # global stock_prices
+    if('stock_prices' in globals()):
+        return(stock_prices)
+    else:
+        return ('no stock data')
+
 
 
 @app.route('/', defaults={'path': ''})

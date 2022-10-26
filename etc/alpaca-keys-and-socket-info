@@ -1,0 +1,22 @@
+{"action": "auth", "key": "{KEY_ID}", "secret": "{SECRET}"}
+
+API KEY ID: PKXXD6MZF6WF089E7W62
+
+API KEY SECRET: PjZ9GFecCS0hj3yUTyBudxAv1iGNjsHm1W4JFgEB
+
+
+
+Broker:
+
+key
+CKBIPE7Z656PQ0H4ESUH
+
+secret
+9BFN6cl7lfxCTHIKgubpYOKA77tKIaruHqz1VZM3
+
+{"action": "auth", "key": "CKASOG6G35Y9RQTRX0HZ", "secret": "Svi5m9AFJnP0I4U3d1g6NdOVb8RUgKu6fbRbiLb7"}
+
+{"action":"subscribe","quotes":["AMZN", "NFLX", "GOOG", "MSFT", "TSLA", "META", "NVDA", "ORCL", "CSCO", "CRM", "ADBE", "QCOM", "IBM", "INTC", "PYPL", "AMD", "SONY", "ABNB", "MU", "TEAM", "VMW", "ATVI", "UBER", "ADSK", "ZM", "DELL", "EA", "TWTR",  "SNOW", "TXN"]}
+
+
+{"T":"q","S":"GOOG","bx":"V","bp":96,"bs":1,"ax":"V","ap":96.64,"as":3,"c":["R"],"z":"C","t":"2022-10-26T17:31:07.634825991Z"}
