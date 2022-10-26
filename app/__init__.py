@@ -8,10 +8,74 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.watchlist_routes import watchlist_routes
+from .api.transaction_routes import transaction_routes
+from .api.asset_routes import asset_routes
+from .api.note_routes import note_routes
 
 from .seeds import seed_commands
 
 from .config import Config
+
+import socket
+from _thread import *
+import threading
+
+print_lock = threading.Lock()
+
+alpaca_connected = True
+
+def threaded(c):
+
+    print('threaded...')
+
+    while alpaca_connected:
+        data = c.recv(1024)
+        if not data:
+            print('Bye')
+
+            # lock released on exit
+            print_lock.release()
+            break
+
+        # reverse the given string from client
+        data = data[::-1]
+
+        # send back reversed string to client
+        c.send(data)
+
+    # connection closed
+    c.close()
+
+
+
+host = ""
+    # reserve a port on your computer
+    # in our case it is 12345 but it
+    # can be anything
+port = 443
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((host, port))
+print("socket binded to port", port)
+
+# put the socket into listening mode
+s.listen(5)
+print("socket is listening")
+
+# a forever loop until client wants to exit
+while True:
+
+    # establish connection with client
+    c, addr = s.accept()
+
+    # lock acquired by client
+    print_lock.acquire()
+    print('Connected to :', addr[0], ':', addr[1])
+
+    # Start a new thread and return its identifier
+    start_new_thread(threaded, (c,))
+s.close()
+
 
 app = Flask(__name__)
 
@@ -31,6 +95,10 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(watchlist_routes, url_prefix='/api/watchlists')
+app.register_blueprint(transaction_routes, url_prefix='/api/transactions')
+app.register_blueprint(asset_routes, url_prefix='/api/assets')
+app.register_blueprint(note_routes, url_prefix='/api/notes')
 db.init_app(app)
 Migrate(app, db)
 
