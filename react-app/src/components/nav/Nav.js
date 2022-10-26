@@ -9,15 +9,16 @@ export default function Nav() {
             <i class="fa-solid fa-microchip nav-icon"></i>
                 {'Cybertrade >'}
             </div>
-                <div className='tan-search-container'>
+                <div className='nav-search-container'>
                     <div className='nav-search-pseudo-input'>
+                    <i class="fa-solid fa-terminal nav-search-icon"></i>
                         <form onSubmit={(e) => {
                             e.preventDefault()
                             // history.push()
                             // document.getElementById('search-input-field').blur();
                         }}>
                             <input
-                                className='tan-search-input'
+                                className='nav-search-input'
                                 id='search-input-field'
                                 type='text'
                                 // value={searchInput}
