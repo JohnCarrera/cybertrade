@@ -41,14 +41,16 @@ export const getWatchlists = () => async (dispatch) => {
 }
 
 export const createWatchlist = (watchlist) => async (dispatch) => {
+    console.log(JSON.stringify(watchlist))
     const res = await fetch('/api/watchlists', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: watchlist
+        body: JSON.stringify(watchlist)
     });
 
+    console.log(res);
     if(res.ok) {
         const watchlist = await res.json();
         dispatch(create(watchlist));

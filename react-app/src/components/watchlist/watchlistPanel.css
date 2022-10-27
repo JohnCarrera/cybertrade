@@ -1,7 +1,31 @@
 .wlp-main{
+    box-sizing: border-box;
     width: 300px;
     height: auto;
-    border: 1px solid #005eda;
-    background-color: #241f3d;
+    background-color: #665e93;
+    border-radius: 4px;
+    border: 1px solid #00da86;
+}
+
+.wlp-font{
+    color: #00da86;
+}
+
+.wlp-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.wlp-top{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    border-bottom: 1px solid #00da86;
 
 }

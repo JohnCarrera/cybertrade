@@ -15,11 +15,11 @@ export default function Dashboard() {
 
                 </div>
             <div className='db-main-rt-info db-font'>
-                Account Balance: {'data'}
+                Account Balance: {' $0.00'}
                 <br/>
-                Positions: {'data'}
+                Positions: {' No open positions.'}
                 <br/>
-                Open Orders: {'data'}
+                Open Orders: {' No open orders.'}
 
             </div>
             </div>
