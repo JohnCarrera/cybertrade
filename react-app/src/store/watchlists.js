@@ -77,7 +77,7 @@ export const updateWatchlist = (id, watchlist) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: watchlist
+        body: JSON.stringify(watchlist)
     });
 
     if(res.ok) {

@@ -40,6 +40,28 @@ def create_watchlist():
         return new_wl.to_dict()
     return {'msg': 'bad'}, 400
 
+@watchlist_routes.route('<int:wl_id>', methods=['PUT'])
+@login_required
+def update_watchlist(wl_id):
+
+    wl = Watchlist.query.get(wl_id)
+
+    if wl is None:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404
+        }, 404
+
+    form = WatchlistForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        form_data = form.data
+
+        wl.name = form_data['name']
+        db.session.commit()
+        return wl.to_dict()
+    return {'msg': 'bad'}, 400
+
 @watchlist_routes.route('<int:wl_id>', methods=['DELETE'])
 @login_required
 def delete_watchlist(wl_id):
