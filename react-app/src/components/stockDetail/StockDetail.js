@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStockDetailApi } from '../../store/stocks';
+import { getStockDetailApi, getSingleStock } from '../../store/stocks';
 import { useParams } from 'react-router-dom'
 
 import WatchlistPanel from '../watchlist/WatchlistPanel';
@@ -19,7 +19,8 @@ export default function StockDetail() {
 
     useEffect(() => {
         dispatch(getWatchlists());
-        dispatch(getStockDetailApi(symbol));
+        // dispatch(getStockDetailApi(symbol));
+        dispatch(getSingleStock(symbol));
     }, dispatch);
 
 

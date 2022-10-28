@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 149b5de51236
+Revision ID: 93231399961c
 Revises: 
-Create Date: 2022-10-27 17:18:37.346647
+Create Date: 2022-10-28 16:40:30.531282
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '149b5de51236'
+revision = '93231399961c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,7 +22,55 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('symbol', sa.String(length=5), nullable=False),
     sa.Column('name', sa.String(length=150), nullable=False),
-    sa.Column('industry', sa.String(length=50), nullable=False),
+    sa.Column('industry', sa.String(length=150), nullable=True),
+    sa.Column('price', sa.Float(), nullable=True),
+    sa.Column('address', sa.String(length=200), nullable=True),
+    sa.Column('averageVolume', sa.Integer(), nullable=True),
+    sa.Column('averageVolume10days', sa.Integer(), nullable=True),
+    sa.Column('beta', sa.Float(), nullable=True),
+    sa.Column('city', sa.String(length=50), nullable=True),
+    sa.Column('country', sa.String(length=50), nullable=True),
+    sa.Column('debtToEquity', sa.Float(), nullable=True),
+    sa.Column('ebitda', sa.Integer(), nullable=True),
+    sa.Column('fiftyDayAverage', sa.Float(), nullable=True),
+    sa.Column('fiftyTwoWeekHigh', sa.Float(), nullable=True),
+    sa.Column('fiftyTwoWeekLow', sa.Float(), nullable=True),
+    sa.Column('floatShares', sa.Integer(), nullable=True),
+    sa.Column('forwardEps', sa.Float(), nullable=True),
+    sa.Column('forwardPE', sa.Float(), nullable=True),
+    sa.Column('freeCashflow', sa.Integer(), nullable=True),
+    sa.Column('fullTimeEmployees', sa.Integer(), nullable=True),
+    sa.Column('grossMargins', sa.Float(), nullable=True),
+    sa.Column('grossProfits', sa.Integer(), nullable=True),
+    sa.Column('heldPercentInsiders', sa.Float(), nullable=True),
+    sa.Column('heldPercentInstitutions', sa.Float(), nullable=True),
+    sa.Column('logo_url', sa.String(length=200), nullable=True),
+    sa.Column('longBusinessSummary', sa.String(length=2000), nullable=True),
+    sa.Column('longName', sa.String(length=200), nullable=True),
+    sa.Column('marketCap', sa.Integer(), nullable=True),
+    sa.Column('operatingCashflow', sa.Integer(), nullable=True),
+    sa.Column('operatingMargins', sa.Float(), nullable=True),
+    sa.Column('phone', sa.String(length=20), nullable=True),
+    sa.Column('profitMargins', sa.Float(), nullable=True),
+    sa.Column('recommendationKey', sa.String(length=20), nullable=True),
+    sa.Column('recommendationMean', sa.Float(), nullable=True),
+    sa.Column('revenueGrowth', sa.Float(), nullable=True),
+    sa.Column('revenuePerShare', sa.Float(), nullable=True),
+    sa.Column('sector', sa.String(length=100), nullable=True),
+    sa.Column('sharesOutstanding', sa.Integer(), nullable=True),
+    sa.Column('sharesShort', sa.Integer(), nullable=True),
+    sa.Column('shortName', sa.String(length=100), nullable=True),
+    sa.Column('shortPercentOfFloat', sa.Float(), nullable=True),
+    sa.Column('shortRatio', sa.Float(), nullable=True),
+    sa.Column('state', sa.String(length=20), nullable=True),
+    sa.Column('totalCash', sa.Integer(), nullable=True),
+    sa.Column('totalCashPerShare', sa.Float(), nullable=True),
+    sa.Column('totalDebt', sa.Integer(), nullable=True),
+    sa.Column('totalRevenue', sa.Integer(), nullable=True),
+    sa.Column('twoHundredDayAverage', sa.Float(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('website', sa.String(length=200), nullable=True),
+    sa.Column('zip_code', sa.String(length=10), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('symbol')
     )

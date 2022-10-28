@@ -52,8 +52,8 @@ export const getSingleStock = (id) => async (dispatch) => {
     });
 
     if(res.ok) {
-        const allStocks = await res.json();
-        dispatch(loadAll(allStocks));
+        const singleStock = await res.json();
+        dispatch(loadOne(singleStock));
         return res;
     }
     return res;
@@ -121,27 +121,6 @@ export const getStockDetailApi = (sym) => async (dispatch) => {
     }
     return res;
 }
-
-
-// const encodedParams = new URLSearchParams();
-// encodedParams.append("symbol", "AAPL");
-
-// const options = {
-// 	method: 'POST',
-// 	headers: {
-// 		'content-type': 'application/x-www-form-urlencoded',
-// 		'X-RapidAPI-Key': 'bd4701dc24msh176dd5c28ae70c0p19597cjsn7862a00548ec',
-// 		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
-// 	},
-// 	body: encodedParams
-// };
-
-// fetch('https://yahoo-finance97.p.rapidapi.com/stock-info', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-
 
 const initialState = {
                         allStocks: null,

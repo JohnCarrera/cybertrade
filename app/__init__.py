@@ -126,7 +126,7 @@ def start_stream():
     }
 
     alpaca_login = '{"action": "auth", "key": "CKASOG6G35Y9RQTRX0HZ", "secret": "Svi5m9AFJnP0I4U3d1g6NdOVb8RUgKu6fbRbiLb7"}'
-    alpaca_sub = '{"action":"subscribe","quotes":["AMZN", "NFLX", "GOOG", "MSFT", "TSLA", "META", "NVDA", "ORCL", "CSCO", "CRM", "ADBE", "QCOM", "IBM", "INTC", "PYPL", "AMD", "SONY", "ABNB", "MU", "TEAM", "VMW", "ATVI", "UBER", "ADSK", "ZM", "DELL", "EA", "TWTR",  "SNOW", "TXN"]}'
+    alpaca_sub = '{"action":"subscribe","quotes":["AMZN", "NFLX", "GOOG", "MSFT", "TSLA", "META", "NVDA", "ORCL", "CSCO", "CRM", "ADBE", "QCOM", "IBM", "INTC", "PYPL", "AMD", "SONY", "ABNB", "MU", "TEAM", "VMW", "ATVI", "UBER", "ADSK", "ZM", "DELL", "EA", "TWTR", "SNOW", "TXN"]}'
     # data = message
     # dataDict = json.loads(data)[0]
     # print(f'dict: {dataDict}')

@@ -19,7 +19,7 @@ function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
 
-    const allStocks = useSelector(state => state.stocks.allStocks)
+    const prices = useSelector(state => state.stocks.prices)
     const stream = useSelector(state => state.stocks.stream)
 
     useEffect(() => {
@@ -73,13 +73,13 @@ function App() {
                             <button onClick={otherBtnClick}>Update Prices</button>
                         </div>
                         <div className='stock-chart'>
-                            {allStocks && Object.values(allStocks).map(stock => (
+                            {prices && Object.keys(prices).map(key => (
                                 <div className='stock-element'>
                                     <div className='stock-symbol'>
-                                        {stock.symbol}
+                                        {key}
                                     </div>
                                     <div className='stock-price'>
-                                        {stock.price}
+                                        {prices[key]}
                                     </div>
                                 </div>
                             ))}

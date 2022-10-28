@@ -14,3 +14,17 @@ stock_routes = Blueprint('stock', __name__)
 def get_stocks():
     stocks = Stock.query.all()
     return {stock.symbol: stock.to_dict() for stock in stocks}
+
+
+@stock_routes.route('<string:sym>', methods=['GET'])
+@login_required
+def get_single_stock():
+    stock = Stock.query.filter_by(symbol=sym).first()
+
+    if stock is None:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404
+        }, 404
+
+    return stock.to_big_dict()
