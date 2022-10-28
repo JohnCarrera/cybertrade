@@ -1,3 +1,5 @@
+import xRapidKey from '../data/xRapid.json';
+
 const UPDATE_PRICES = 'stocks/UPDATE_PRICES';
 const LOAD_ALL = 'stocks/LOAD_ALL';
 const LOAD_ONE = 'stocks/LOAD_ONE';
@@ -101,7 +103,7 @@ export const getStockDetailApi = (sym) => async (dispatch) => {
 	method: 'POST',
 	headers: {
 		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': 'bd4701dc24msh176dd5c28ae70c0p19597cjsn7862a00548ec',
+		'X-RapidAPI-Key': xRapidKey.key,
 		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
 	},
 	body: encodedParams
