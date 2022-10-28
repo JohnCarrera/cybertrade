@@ -9,3 +9,8 @@
 .wl-name{
     color: #00da86;
 }
+
+.wl-stocks-div{
+    display: flex;
+    flex-direction: column;
+}

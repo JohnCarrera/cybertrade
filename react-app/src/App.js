@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Nav from './components/nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
+import StockDetail from './components/stockDetail/StockDetail';
 import { authenticate } from './store/session';
 
 import { updateStockPrices, startDataStream } from './store/stocks';
@@ -25,7 +26,7 @@ function App() {
         (async () => {
             await dispatch(authenticate());
             setLoaded(true);
-            dispatch(updateStockPrices());
+            // dispatch(updateStockPrices());
         })();
     }, [dispatch]);
 
@@ -59,6 +60,9 @@ function App() {
                 </ProtectedRoute>
                 <ProtectedRoute path='/dashboard'>
                     <Dashboard />
+                </ProtectedRoute>
+                <ProtectedRoute path='/stocks/:symbol'>
+                    <StockDetail />
                 </ProtectedRoute>
                 <ProtectedRoute path='/' exact={true} >
                     <div className='main-body'>

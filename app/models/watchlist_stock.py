@@ -4,18 +4,19 @@ watchlist_stock = db.Table(
     "watchlist_stocks",
     db.Model.metadata,
     db.Column("watchlist_id", db.Integer, db.ForeignKey("watchlists.id"), nullable=False),
-    db.Column("symbol", db.String(6), db.ForeignKey("stocks.id"), nullable=False)
+    db.Column("stock_id", db.Integer, db.ForeignKey("stocks.id"), nullable=False)
 )
 
 class Stock(db.Model):
     __tablename__ = "stocks"
 
     id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(5), unique=True, nullable=False)
     name = db.Column(db.String(150), nullable=False)
     industry = db.Column(db.String(50), nullable=False)
-    market_cap = db.Column(db.Float, nullable = False)
+    # market_cap = db.Column(db.Float, nullable = False)
 
-    watchlist = db.relationship("Watchlist", secondary=watchlist_stock, back_populates="stock")
+    watchlist = db.relationship("Watchlist", secondary=watchlist_stock, back_populates="stocks")
     asset = db.relationship("Asset", back_populates="stock")
     transaction = db.relationship("Transaction", back_populates="stock")
     note = db.relationship("Note", back_populates="stock")
@@ -25,9 +26,9 @@ class Stock(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'symbol': self.symbol,
             'name': self.name,
             'industry': self.industry,
-            'market_cap': self.market_cap
         }
 
 
@@ -40,10 +41,11 @@ class Watchlist(db.Model):
 
 
     user = db.relationship("User", back_populates="watchlist")
-    stock = db.relationship("Stock", secondary=watchlist_stock, back_populates="watchlist")
+    stocks = db.relationship("Stock", secondary=watchlist_stock, back_populates="watchlist")
 
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name
+            'name': self.name,
+            'stocks': [stock.symbol for stock in self.stocks]
         }

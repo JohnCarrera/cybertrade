@@ -1,7 +1,9 @@
 const LOAD = 'watchlists/LOAD';
 const CREATE = 'watchlists/CREATE';
 const UPDATE = 'watchlists/UPDATE';
-const DELETE = 'watchlists/DELETE'
+const DELETE = 'watchlists/DELETE';
+const ADD_STOCK = 'watchlists/ADD_STOCK';
+const REMOVE_STOCK = 'watchlists/REMOVE_STOCK';
 
 
 const load = watchlists => ({
@@ -19,10 +21,20 @@ const update = watchlist => ({
     watchlist
 });
 
-const del = watchlist => ({
+const del = id => ({
     type: DELETE,
+    id
 })
 
+const addStock = (watchlist) =>({
+    type: ADD_STOCK,
+    watchlist
+})
+
+const removeStock = (watchlist) =>({
+    type: REMOVE_STOCK,
+    watchlist
+})
 
 export const getWatchlists = () => async (dispatch) => {
     const res = await fetch('/api/watchlists', {
@@ -85,12 +97,45 @@ export const deleteWatchlist = (id) => async (dispatch) => {
     });
 
     if(res.ok) {
-        const deletedWatchlist = await res.json();
-        dispatch(del(deleteWatchlist));
+        const resJson = await res.json();
+        dispatch(del(id));
+        return resJson;
+    }
+    return res;
+}
+
+export const addStockToWatchlist = (id, sym) => async (dispatch) => {
+    const res = await fetch(`/api/watchlists/${id}/${sym}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+
+    if(res.ok) {
+        const watchlist = await res.json();
+        dispatch(addStock(watchlist));
         return res;
     }
     return res;
 }
+
+export const removeStockFromWatchlist = (id, sym) => async (dispatch) => {
+    const res = await fetch(`/api/watchlists/${id}/${sym}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+
+    if(res.ok) {
+        const watchlist = await res.json();
+        dispatch(removeStock(watchlist));
+        return res;
+    }
+    return res;
+}
+
 
 
 const initialState = null;
@@ -99,6 +144,8 @@ export const watchlistReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             return action.watchlists
+        case ADD_STOCK:
+        case REMOVE_STOCK:
         case CREATE:
         case UPDATE:
             return {
@@ -106,10 +153,11 @@ export const watchlistReducer = (state = initialState, action) => {
                 [action.watchlist.id]: action.watchlist
             }
         case DELETE:
-            const newState ={...state}
+            const newState={...state}
             delete newState[action.id]
             return newState
 
-        default: return initialState
+        default:
+            return {...state}
     }
 }

@@ -1,14 +1,12 @@
 
 * {
     margin: 0;
-    font-family: 'Share Tech Mono', monospace;;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 *:focus {
     outline:none;
 }
-
-
 
 .stock-chart{
     width: 200px;
@@ -16,7 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid grey;
+    border: 1px solid #00da86;
 }
 
 .stock-element{
@@ -33,7 +31,8 @@
     justify-content: center;
     width:50%;
     height:100%;
-    border: 1px solid grey;
+    border: 1px solid #00da86;
+    /* color: #00da86 */
 }
 
 .stock-price{
@@ -44,6 +43,7 @@
     width:50%;
     height:100%;
     border: 1px solid grey;
+    /* color: # ; */
 }
 
 .main-body{
@@ -55,5 +55,4 @@
 .upper{
     height:fit-content;
     width: fit-content;
-    border: 1px solid lemonchiffon
 }

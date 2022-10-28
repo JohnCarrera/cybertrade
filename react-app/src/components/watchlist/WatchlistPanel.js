@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Watchlist from './Watchlist'
 import { useDispatch, useSelector } from 'react-redux';
-import { createWatchlist } from '../../store/watchlists';
+import { createWatchlist, getWatchlists } from '../../store/watchlists';
+import { getAllStocks, updateStockPrices } from '../../store/stocks';
 import './watchlistPanel.css'
 
 export default function WatchlistPanel() {
 
     const dispatch = useDispatch();
+    const watchlists = useSelector(state => state.watchlists);
+    const stocks = useSelector(state => state.stocks.allStocks);
+    const prices = useSelector(state => state.stocks.prices);
+
+    useEffect(() => {
+        dispatch(getWatchlists());
+        dispatch(getAllStocks());
+        dispatch(updateStockPrices());
+    },[dispatch])
 
     const addWatchlistClick = (e) => {
         e.preventDefault();
@@ -28,15 +38,18 @@ export default function WatchlistPanel() {
                     className='wlp-add-div wlp-font'
                     onClick={addWatchlistClick}
                 >
-                    <i class="fa-solid fa-square-plus fa-lg"/>
+                    <i className="fa-solid fa-square-plus fa-lg"/>
                 </div>
             </div>
-            <Watchlist name={'watchlist1'} />
-            <Watchlist name={'watchlist2'} />
-            <Watchlist name={'watchlist3'} />
-            <Watchlist name={'watchlist4'} />
-            <Watchlist name={'watchlist5'} />
-            <Watchlist name={'watchlist6'} />
+            {watchlists && stocks && prices &&
+                Object.values(watchlists).map( wl  => (
+                    <Watchlist
+                        key={wl.id}
+                        wl={wl}
+                        stocks={stocks}
+                        prices={prices}
+                    />
+                ))}
         </div>
     )
 }
