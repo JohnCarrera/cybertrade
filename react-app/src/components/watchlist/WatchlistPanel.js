@@ -3,6 +3,7 @@ import Watchlist from './Watchlist'
 import { useDispatch, useSelector } from 'react-redux';
 import { createWatchlist, getWatchlists } from '../../store/watchlists';
 import { getAllStocks, updateStockPrices } from '../../store/stocks';
+import { loadAssets } from '../../store/assets';
 import './watchlistPanel.css'
 
 export default function WatchlistPanel() {
@@ -11,11 +12,13 @@ export default function WatchlistPanel() {
     const watchlists = useSelector(state => state.watchlists);
     const stocks = useSelector(state => state.stocks.allStocks);
     const prices = useSelector(state => state.stocks.prices);
+    const balance = useSelector(state => state.assets._CASH)
 
     useEffect(() => {
         dispatch(getWatchlists());
         dispatch(getAllStocks());
         dispatch(updateStockPrices());
+        dispatch(loadAssets());
     },[dispatch])
 
     const addWatchlistClick = (e) => {
@@ -48,6 +51,7 @@ export default function WatchlistPanel() {
                         wl={wl}
                         stocks={stocks}
                         prices={prices}
+                        balance={balance.quantity ? balance.quantity : 0}
                     />
                 ))}
         </div>

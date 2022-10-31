@@ -5,7 +5,6 @@ const LOAD_ALL = 'stocks/LOAD_ALL';
 const LOAD_ONE = 'stocks/LOAD_ONE';
 const START_STREAM = 'stocks/START_STREAM';
 
-
 const loadAll = allStocks => ({
     type: LOAD_ALL,
     allStocks
@@ -25,7 +24,6 @@ const startStream = started => ({
     type: START_STREAM,
     started
 })
-
 
 export const getAllStocks = () => async (dispatch) => {
     const res = await fetch('/api/stocks', {

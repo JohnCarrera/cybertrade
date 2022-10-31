@@ -1591,6 +1591,10 @@ def seed_stocks():
         website='https://www.ti.com',
         zip_code='75243',
     )
+    _CASH = Stock(
+        symbol='_CASH',
+        name='Cash',
+    )
 
     db.session.add(AMZN)
     db.session.add(NFLX)

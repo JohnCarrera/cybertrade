@@ -23,7 +23,6 @@ export default function StockDetail() {
         dispatch(getSingleStock(symbol));
     }, dispatch);
 
-
     const addToWlSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();

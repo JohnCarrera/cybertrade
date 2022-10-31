@@ -5,7 +5,7 @@ import WLStockItem from './WLStockItem';
 import Dropdown from '../Dropdown/Dropdown';
 import './watchlist.css';
 
-export default function Watchlist({ wl, stocks, prices }) {
+export default function Watchlist({ wl, stocks, prices, balance }) {
 
     const dispatch = useDispatch()
 
@@ -47,7 +47,9 @@ export default function Watchlist({ wl, stocks, prices }) {
                         <div>
                             <WLStockItem
                                 stock={stocks[stock]}
-                                price={prices[stock]}
+                                // price={prices[stock]}
+                                price={stocks[stock].price}
+                                balance={balance}
                                 wlid={wl.id}
                             />
                         </div>

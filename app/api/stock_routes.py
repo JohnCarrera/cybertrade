@@ -18,8 +18,8 @@ def get_stocks():
 
 @stock_routes.route('<string:sym>', methods=['GET'])
 @login_required
-def get_single_stock():
-    stock = Stock.query.filter_by(symbol=sym).first()
+def get_single_stock(sym):
+    stock = Stock.query.filter_by(symbol=sym.upper()).first()
 
     if stock is None:
         return {

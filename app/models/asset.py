@@ -8,7 +8,7 @@ class Asset(db.Model):
     symbol = db.Column(db.String(6), db.ForeignKey("stocks.id"), nullable=False)
     type = db.Column(db.String(50), nullable=False)
     value = db.Column(db.Float, nullable=True)
-    quantity = db.Column(db.Integer, nullable = False)
+    quantity = db.Column(db.Float, nullable = False)
 
     user = db.relationship("User", back_populates="asset")
     stock = db.relationship("Stock", back_populates="asset")
