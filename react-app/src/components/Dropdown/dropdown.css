@@ -6,7 +6,7 @@
     position: absolute;
     height: 200px;
     width: 100px;
-    background-color: rgb(11, 32, 17, .9);
+    background-color: #0b2011e6;
     border: 1px solid #00da86;
     z-index: 1;
 }
