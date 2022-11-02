@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Nav from './components/nav/Nav';
+import Nav from './components/Nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
 import StockDetail from './components/stockDetail/StockDetail';
 import LoginFormPage from './components/auth/LoginFormPage/login';
