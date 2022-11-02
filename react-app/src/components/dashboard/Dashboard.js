@@ -6,7 +6,7 @@ import { loadTransactions } from '../../store/transactions';
 import { getAllStocks } from '../../store/stocks';
 import WatchlistPanel from '../watchlist/WatchlistPanel';
 import DBInfoPanel from './DBInfoPanel';
-import DashNav from './DashNav';
+import dbMainImg from '../../img/neon-city.png'
 import './dashboard.css';
 
 
@@ -58,7 +58,7 @@ export default function Dashboard() {
                     Cybertrade Dashboard
                 </div>
                 <div className='db-main-rt-img-block'>
-
+                    <img className='db-main-img' src={dbMainImg}/>
                 </div>
                 <DBInfoPanel
                     cash={cash.quantity}

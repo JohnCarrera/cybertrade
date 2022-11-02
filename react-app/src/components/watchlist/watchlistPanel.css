@@ -1,10 +1,13 @@
 .wlp-main{
     box-sizing: border-box;
-    width: 300px;
-    height: auto;
-    background-color: #665e93;
+    width: 360px;
+    height: 954px;
+    background-color: #2c235a;
     border-radius: 4px;
     border: 1px solid #00da86;
+    margin-top: 56px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .wlp-font{
@@ -28,4 +31,11 @@
     width: 100%;
     border-bottom: 1px solid #00da86;
 
+}
+
+.wlp-lower-main{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: calc(100% - 50px);
 }

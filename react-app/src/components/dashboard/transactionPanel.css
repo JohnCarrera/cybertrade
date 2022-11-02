@@ -1,15 +1,18 @@
 .tp-main{
-    padding: 30px
+    padding: 30px;
+    overflow: scroll;
+    width: 90%;
+    height: 95%
 }
 
 .tp-table-main{
-    width: 100%;
+    min-width: 100%;
 }
 
 .tp-table-main, .tp-th, .tp-td{
     border-collapse: collapse;
     border: 1px solid #665e93;
-    padding: 5px;
+    padding: 10px;
 }
 
 
@@ -20,9 +23,14 @@
     text-align: left;
 }
 
+.tp-tbody{
+
+}
+
 .tp-th{
     margin-right: 10px;
     margin-left: 10px;
+    width: 17%;
 }
 
 .tp-td{

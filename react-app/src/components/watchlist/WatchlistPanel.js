@@ -20,14 +20,14 @@ export default function WatchlistPanel() {
         dispatch(getAllStocks());
         dispatch(updateStockPrices());
         dispatch(loadAssets());
-    },[dispatch])
+    }, [dispatch])
 
     const addWatchlistClick = (e) => {
         e.preventDefault();
         // e.stopPropagation();
         console.log('adding watchlist')
 
-        const data= { name: 'new watchlist'}
+        const data = { name: 'new watchlist' }
         dispatch(createWatchlist(data));
 
     }
@@ -42,20 +42,22 @@ export default function WatchlistPanel() {
                     className='wlp-add-div wlp-font'
                     onClick={addWatchlistClick}
                 >
-                    <i className="fa-solid fa-square-plus fa-lg"/>
+                    <i className="fa-solid fa-square-plus fa-lg" />
                 </div>
             </div>
-            {watchlists && stocks && prices &&
-                Object.values(watchlists).map( wl  => (
-                    <Watchlist
-                        key={wl.id}
-                        wl={wl}
-                        stocks={stocks}
-                        prices={prices}
-                        balance={balance.quantity ? balance.quantity : 0}
-                        assets={assets}
-                    />
-                ))}
+            <div className='wlp-lower-main'>
+                {watchlists && stocks && prices &&
+                    Object.values(watchlists).map(wl => (
+                        <Watchlist
+                            key={wl.id}
+                            wl={wl}
+                            stocks={stocks}
+                            prices={prices}
+                            balance={balance.quantity ? balance.quantity : 0}
+                            assets={assets}
+                        />
+                    ))}
+            </div>
         </div>
     )
 }
