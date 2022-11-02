@@ -12,7 +12,8 @@ export default function WatchlistPanel() {
     const watchlists = useSelector(state => state.watchlists);
     const stocks = useSelector(state => state.stocks.allStocks);
     const prices = useSelector(state => state.stocks.prices);
-    const balance = useSelector(state => state.assets._CASH)
+    const balance = useSelector(state => state.assets._CASH);
+    const assets = useSelector(state => state.assets);
 
     useEffect(() => {
         dispatch(getWatchlists());
@@ -52,6 +53,7 @@ export default function WatchlistPanel() {
                         stocks={stocks}
                         prices={prices}
                         balance={balance.quantity ? balance.quantity : 0}
+                        assets={assets}
                     />
                 ))}
         </div>

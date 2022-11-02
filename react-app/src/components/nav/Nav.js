@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoutButton from '../auth/LogoutButton';
 import './nav.css';
 
 export default function Nav() {
@@ -36,6 +37,9 @@ export default function Nav() {
                     </div>
                 </div>
                 <div className='nav-acct nav-text'>
+                <div className='main-nav-profile-btn'>
+            <LogoutButton classProp='spl-sign-up-btn'/>
+            </div>
                     /account
                 </div>
         </div>

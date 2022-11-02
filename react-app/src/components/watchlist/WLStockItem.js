@@ -5,7 +5,7 @@ import { createTransaction } from '../../store/transactions';
 import { addAsset, updateAsset, updateCashBalance } from '../../store/assets';
 import './wlStockItem.css';
 
-export default function WLStockItem({ stock, price, wlid, balance }) {
+export default function WLStockItem({ stock, price, wlid, balance, asset }) {
 
     const dispatch = useDispatch()
 
@@ -34,14 +34,20 @@ export default function WLStockItem({ stock, price, wlid, balance }) {
 
         if (tr){
 
-          const assetData = {
+            const assetData = {
                 symbol: stock.symbol,
                 type: 'STOCK',
                 value: price,
-                quantity: qty
             }
 
-          dispatch(addAsset(assetData))
+            if(asset){
+                assetData.qty = Number(asset.quantity) + Number(qty)
+                dispatch(updateAsset(asset.id, assetData))
+            } else {
+                assetData.quantity = qty
+                dispatch(addAsset(assetData))
+            }
+
         }
     }
 
@@ -72,12 +78,27 @@ export default function WLStockItem({ stock, price, wlid, balance }) {
                 <button
                     className='wlsi-buy'
                     onClick={buyClick}
+                    disabled={
+                        Number(qty) && qty*price <= balance ? false : true
+                    }
                 >
                     Buy
                 </button>
                 <button
                     className='wlsi-sell'
                     onClick={sellClick}
+                    disabled={
+                        asset && Number(qty)
+                        ?
+                            (asset.quantity >= qty
+                                ?
+                                    false
+                                :
+                                    true
+                            )
+                        :
+                            true
+                        }
                 >
                     Sell
                 </button>

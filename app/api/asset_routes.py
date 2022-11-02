@@ -55,7 +55,6 @@ def update_cash():
                     "message": "Asset not found",
                     "statusCode": 404}, 404
 
-    print('pppppppppppppppppppppppp - here')
 
     form = AssetUpdateCashForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -72,7 +71,7 @@ def update_cash():
 
 @asset_routes.route('/<int:ass_id>', methods=['PUT'])
 @login_required
-def update_asset():
+def update_asset(ass_id):
 
     asset = Asset.query.get(ass_id)
 

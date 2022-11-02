@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -10,6 +8,8 @@ import User from './components/User';
 import Nav from './components/nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
 import StockDetail from './components/stockDetail/StockDetail';
+import LoginFormPage from './components/auth/LoginFormPage/login';
+import SignupFormPage from './components/auth/SignupFormPage/signup';
 import { authenticate } from './store/session';
 
 import { updateStockPrices, startDataStream } from './store/stocks';
@@ -44,25 +44,22 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Nav />
             <Switch>
                 <Route path='/login' exact={true}>
-                    <LoginForm />
+                    <LoginFormPage />
                 </Route>
-                <Route path='/sign-up' exact={true}>
-                    <SignUpForm />
+                <Route path='/signup' exact={true}>
+                    <SignupFormPage />
                 </Route>
-                <ProtectedRoute path='/users' exact={true} >
-                    <UsersList />
-                </ProtectedRoute>
-                <ProtectedRoute path='/users/:userId' exact={true} >
-                    <User />
-                </ProtectedRoute>
-                <ProtectedRoute path='/dashboard'>
-                    <Dashboard />
-                </ProtectedRoute>
-                <ProtectedRoute path='/stocks/:symbol'>
-                    <StockDetail />
+
+                <ProtectedRoute path='/app'>
+                    <Nav />
+                    <Route path='/app/dashboard'>
+                        <Dashboard />
+                    </Route>
+                    <Route path='/app/stocks/:symbol'>
+                        <StockDetail />
+                    </Route>
                 </ProtectedRoute>
                 <ProtectedRoute path='/' exact={true} >
                     <div className='main-body'>
