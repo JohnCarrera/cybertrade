@@ -1,0 +1,31 @@
+.op-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    row-gap: 20px;
+
+}
+
+.op-row{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.op-row-label{
+    color: #1883fd;
+    width: 200px;
+}
+
+.op-row-val{
+    color: #00da86;
+}
+
+.op-font{
+    font-size: 18px;
+    font-weight: bold;
+}

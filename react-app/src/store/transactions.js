@@ -6,9 +6,9 @@ const create = transaction => ({
     transaction
 })
 
-const load = transaction => ({
-    type: load,
-    transaction
+const load = transactions => ({
+    type: LOAD,
+    transactions
 })
 
 
@@ -39,7 +39,7 @@ export const loadTransactions = () => async (dispatch) => {
 
     if(res.ok) {
         const transactions = await res.json();
-        dispatch(create(transactions));
+        dispatch(load(transactions));
         return res;
     }
     return res;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadAssets } from '../../store/assets';
 import { loadTransactions } from '../../store/transactions';
+import { getAllStocks } from '../../store/stocks';
 import WatchlistPanel from '../watchlist/WatchlistPanel';
 import DBInfoPanel from './DBInfoPanel';
 import DashNav from './DashNav';
@@ -16,6 +17,7 @@ export default function Dashboard() {
     const cash = useSelector(state => state.assets._CASH);
     const assets = useSelector(state => state.assets);
     const transactions = useSelector(state => state.transactions);
+    const stocks = useSelector(state => state.stocks.allStocks);
 
     const calculateAssetValue = () => {
 
@@ -44,6 +46,7 @@ export default function Dashboard() {
 
         dispatch(loadAssets());
         dispatch(loadTransactions());
+        dispatch(getAllStocks());
     }, [dispatch])
 
 
@@ -61,6 +64,7 @@ export default function Dashboard() {
                     cash={cash.quantity}
                     assets={assets}
                     transactions={transactions}
+                    stocks={stocks}
                 />
             </div>
             <div className='db-main-lf'>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 
@@ -9,15 +9,14 @@ import TransactionPanel from './TransactionPanel';
 
 import './dbInfoPanel.css';
 
-export default function DBInfoPanel({ cash, assets, transactions }) {
+export default function DBInfoPanel({ cash, assets, transactions, stocks }) {
 
-    const [cashStr, setCashStr] = useState(convertPad(cash));
+    const [cashStr, setCashStr] = useState();
     const [assetVal, setAssetVal] = useState(convertPad(calculateAssetValue(assets)));
 
     function calculateAssetValue() {
         return Object.values(assets).reduce((a, x) => {
             if (x.symbol !== '_CASH') {
-                console.log(x, a)
                 a += x.value * x.quantity;
                 return a;
             }
@@ -33,10 +32,15 @@ export default function DBInfoPanel({ cash, assets, transactions }) {
             n2 = n2.padEnd(2, '0')
             return `${n1}.${n2}`
         }
-        return num
+        return String(num) + '.00'
     }
 
-    return (
+    useEffect(() => {
+        setCashStr(convertPad(cash));
+        setAssetVal(convertPad(calculateAssetValue(assets)));
+    }, [cash, assetVal]);
+
+    return ( assets && transactions && stocks &&
         <div className='dbip-main-info'>
             <DashNav />
             <Switch>
@@ -44,13 +48,21 @@ export default function DBInfoPanel({ cash, assets, transactions }) {
                     <OverviewPanel
                         assetVal={assetVal}
                         cashVal={cashStr}
+                        assets={assets}
+                        transactions={transactions}
                     />
                 </Route>
                 <Route path='/app/dashboard/assets'>
-                    <AssetPanel />
+                    <AssetPanel
+                        assets={assets}
+                        assetVal={assetVal}
+                        stocks={stocks}
+                    />
                 </Route>
                 <Route path='/app/dashboard/transactions'>
-                    <TransactionPanel />
+                    <TransactionPanel
+                        transactions={transactions}
+                    />
                 </Route>
             </Switch>
 

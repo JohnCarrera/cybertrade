@@ -1,0 +1,33 @@
+.ap-main{
+    padding: 30px
+}
+
+.ap-header-row{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.ap-header-cell{
+    font-size: 16px;
+    font-weight: bold;
+}
+.ap-row{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.ap-font{
+    color: #00da86;
+}
+
+.ap-cell{
+    width: 200px;
+}
