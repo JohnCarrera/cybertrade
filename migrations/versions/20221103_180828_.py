@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 4a350bdf69b1
+Revision ID: f55f0f0fe36a
 Revises: 
-Create Date: 2022-11-03 17:26:53.059624
+Create Date: 2022-11-03 18:08:28.526839
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4a350bdf69b1'
+revision = 'f55f0f0fe36a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -99,7 +99,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('symbol', sa.String(length=6), nullable=False),
     sa.Column('note', sa.Float(), nullable=True),
-    sa.ForeignKeyConstraint(['symbol'], ['stocks.id'], ),
+    sa.ForeignKeyConstraint(['symbol'], ['stocks.symbol'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -112,7 +112,7 @@ def upgrade():
     sa.Column('type', sa.String(length=10), nullable=False),
     sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['symbol'], ['stocks.id'], ),
+    sa.ForeignKeyConstraint(['symbol'], ['stocks.symbol'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -123,7 +123,7 @@ def upgrade():
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('quantity', sa.Float(), nullable=False),
     sa.Column('balance', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['symbol'], ['stocks.id'], ),
+    sa.ForeignKeyConstraint(['symbol'], ['stocks.symbol'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
