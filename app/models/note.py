@@ -5,7 +5,7 @@ class Note(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    symbol = db.Column(db.String(6), db.ForeignKey("stocks.id"), nullable=False)
+    symbol = db.Column(db.String(6), db.ForeignKey("stocks.symbol"), nullable=False)
     note = db.Column(db.Float, nullable=True)
 
     user = db.relationship("User", back_populates="note")

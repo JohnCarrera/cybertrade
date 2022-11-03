@@ -5,7 +5,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    symbol = db.Column(db.String(6), db.ForeignKey("stocks.id"), nullable=False)
+    symbol = db.Column(db.String(6), db.ForeignKey("stocks.symbol"), nullable=False)
     side = db.Column(db.String(4), nullable=False)
     position = db.Column(db.String(5), nullable=False)
     type = db.Column(db.String(10), nullable=False)
