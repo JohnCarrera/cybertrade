@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import './dropdown.css'
 
-export default function Dropdown({ menuItems, onClickFn}) {
+export default function Dropdown({ editForm, wlName, setWlName, wlSubmit}) {
 
     const [menuState, setMenuState] = useState(false);
     const dropDownMenu = useRef();
@@ -42,7 +42,7 @@ export default function Dropdown({ menuItems, onClickFn}) {
                     className='dd-menu-div'
                     ref={dropDownMenu}
                 >
-                    MENU!!!
+                {editForm}
                 </div>}
         </div>
     )

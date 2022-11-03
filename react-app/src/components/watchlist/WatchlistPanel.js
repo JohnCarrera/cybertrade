@@ -36,7 +36,7 @@ export default function WatchlistPanel() {
         <div className='wlp-main'>
             <div className='wlp-top'>
                 <div className='wlp-title wlp-font'>
-                    Watchlist Panel
+                    Watchlists
                 </div>
                 <div
                     className='wlp-add-div wlp-font'

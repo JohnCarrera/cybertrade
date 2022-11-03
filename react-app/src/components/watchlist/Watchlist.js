@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteWatchlist, updateWatchlist } from '../../store/watchlists';
 import WLStockItem from './WLStockItem';
@@ -18,33 +18,54 @@ export default function Watchlist({ wl, stocks, prices, balance, assets }) {
 
     const wlNameSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateWatchlist(wl.id, {name:wlName}));
+        dispatch(updateWatchlist(wl.id, { name: wlName }));
     }
+
+    const editForm = (
+        <form onSubmit={wlNameSubmit}>
+            <input
+                className='wl-rename-input'
+                type='text'
+                value={wlName}
+                onChange={(e) => setWlName(e.target.value)}
+            />
+        </form>
+    )
 
     return (
         <div className='wl-main'>
-            <div className='wl-name'>
-                {wl.name} {'    '}
-                <div onClick={deleteWatchlistClick}>X</div>
-                <form onSubmit={wlNameSubmit}>
-                    <input
-                        className='wl-rename-input'
-                        type='text'
-                        value={wlName}
-                        onChange={(e) => setWlName(e.target.value)}
-                    />
-                    <button
-                        type='submit'
-                    >
-                        Save
-                    </button>
-                </form>
-                <Dropdown />
+            <div className='wl-header'>
+
+                <div className='wl-name'>
+                    {wl.name}
+                </div>
+                <div className='wl-del-div' onClick={deleteWatchlistClick}>
+                    <i className="fa-solid fa-square-xmark fa-lg"></i>
+                </div>
             </div>
-            <div className='wl-stocks-div'>
-                {
-                    wl.stocks.map(stock => (
-                        <div>
+            <table className='wl-table'>
+                <thead>
+                    <tr>
+                        <th className='wl-th'>
+                            Sym
+                        </th>
+                        <th className='wl-th'>
+                            PPS
+                        </th>
+                        <th className='wl-th'>
+                            Owned
+                        </th>
+                        <th className='wl-th-a'>
+                            Action
+                        </th>
+                        <th className='wl-th-x'>
+                            X
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        wl.stocks.map(stock => (
                             <WLStockItem
                                 stock={stocks[stock]}
                                 // price={prices[stock]}
@@ -53,10 +74,10 @@ export default function Watchlist({ wl, stocks, prices, balance, assets }) {
                                 asset={assets[stock] ? assets[stock] : null}
                                 wlid={wl.id}
                             />
-                        </div>
-                    ))
-                }
-            </div>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
     )
 }

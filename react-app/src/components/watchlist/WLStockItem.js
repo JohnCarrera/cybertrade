@@ -1,4 +1,4 @@
-import React , {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeStockFromWatchlist } from '../../store/watchlists';
 import { createTransaction } from '../../store/transactions';
@@ -32,7 +32,7 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
 
         const tr = await dispatch(createTransaction(data))
 
-        if (tr){
+        if (tr) {
 
             const assetData = {
                 symbol: stock.symbol,
@@ -40,7 +40,7 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                 value: price,
             }
 
-            if(asset){
+            if (asset) {
                 assetData.qty = Number(asset.quantity) + Number(qty)
                 dispatch(updateAsset(asset.id, assetData))
             } else {
@@ -57,17 +57,21 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
     }
 
     return (
-        <div className='wlsi-main-div'>
-            <div className='wlsi-sym'>
+        <tr className='wlsi-tr-main'>
+
+            <td className='wlsi-sym wlsi-text'>
                 {stock.symbol}
-            </div>
+            </td>
             {/* <div className='wlsi-name'>
                 {stock.name}
             </div> */}
-            <div>
+            <td className='wlsi-price wlsi-text'>
                 {price}
-            </div>
-            <div className='wlsi-buysell'>
+            </td>
+            <td className='wlsi-owned wlsi-text'>
+                {asset ? asset.quantity : 0}
+            </td>
+            <td className='wlsi-ip'>
                 <input
                     className='wlsi-qty'
                     type='number'
@@ -76,36 +80,32 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                     onChange={e => setQty(e.target.value)}
                 />
                 <button
-                    className='wlsi-buy'
+                    className='wlsi-buy wlsi-ab'
                     onClick={buyClick}
                     disabled={
-                        Number(qty) && qty*price <= balance ? false : true
+                        Number(qty) && qty * price <= balance ? false : true
                     }
                 >
                     Buy
                 </button>
                 <button
-                    className='wlsi-sell'
+                    className='wlsi-sell wlsi-ab'
                     onClick={sellClick}
                     disabled={
                         asset && Number(qty)
-                        ?
-                            (asset.quantity >= qty
-                                ?
-                                    false
-                                :
-                                    true
-                            )
-                        :
-                            true
-                        }
+                            ? (asset.quantity >= qty
+                                ? false
+                                : true)
+                            : true
+                    }
                 >
                     Sell
                 </button>
-            </div>
-            <div onClick={removeStock}>
-            <i className="fa-solid fa-square-xmark "></i>
-            </div>
-        </div>
+            </td>
+            <td className='wlsi-td-rem' onClick={removeStock}>
+                <i className="fa-solid fa-square-xmark fa-lg"></i>
+            </td>
+
+        </tr>
     )
 }

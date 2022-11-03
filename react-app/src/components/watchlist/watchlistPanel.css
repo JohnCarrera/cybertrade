@@ -8,6 +8,12 @@
     margin-top: 56px;
     padding-left: 10px;
     padding-right: 10px;
+    overflow-x: hidden;
+}
+
+.wlp-add-div:hover{
+    color: #d154ff;
+    cursor: pointer;
 }
 
 .wlp-font{
@@ -36,6 +42,8 @@
 .wlp-lower-main{
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     height: calc(100% - 50px);
+
 }

@@ -1,32 +1,81 @@
-.wl-main{
+.wl-main {
     box-sizing: border-box;
-    width:100%;
+    width: 100%;
     height: fit-content;
     border-bottom: 1px solid #00da86;
     /* background-color: #241f3d; */
 }
 
-.wl-name{
+.wl-name {
     color: #00da86;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.wl-stocks-div{
+.wl-table {
+    width: 100%;
+}
+
+.wl-stocks-div {
     display: flex;
     flex-direction: column;
 }
 
-.wlsi-qty{
-    width: 50px;
-    -moz-appearance: textfield;
+.wl-th {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    color: #1883fd
 }
 
-.wlsi-qty::-webkit-outer-spin-button,
-.wlsi-qty::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.wl-th-a {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #1883fd
+}
+
+.wl-th-x {
+    text-align: center;
+    font-weight: bold;
+    color: #1883fd
+}
+
+.wl-del-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #00da86;
+}
+
+.wl-del-div:active{
+    transform: scale(.85);
+}
+
+.wl-del-div:hover{
+    color: #d154ff;
+    cursor:pointer;
+}
+
+.wl-header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 6px;
 }
