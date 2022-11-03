@@ -77,7 +77,7 @@ function LoginFormPage() {
             const response = await dispatch(sessionActions.login(credential, password))
 
             if(!response){
-                history.push('/dashboard')
+                history.push('/app/dashboard/overview');
             }
             else{
                 const err = response[0].split(': ')[1]
@@ -107,7 +107,7 @@ function LoginFormPage() {
             <div className="li-right-pane-main">
                 <div className="li-signup-btn-div">
                     <Link to='/signup'>
-                        <button className="li-signup-btn">{'<sign up>'}</button>
+                        <button className="li-signup-btn">{'< sign up >'}</button>
                     </Link>
                 </div>
 
