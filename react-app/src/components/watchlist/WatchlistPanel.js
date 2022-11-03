@@ -89,7 +89,7 @@ export default function WatchlistPanel() {
                         className='wlp-name-input'
                         type='text'
                         value={wlpCreateName}
-                        placeholder='Enter name...'
+                        placeholder='New watchlist name...'
                         required={true}
                         onChange={(e) => setWlpCreateName(e.target.value)}
                     />

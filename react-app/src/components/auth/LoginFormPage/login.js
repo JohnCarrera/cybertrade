@@ -112,7 +112,7 @@ function LoginFormPage() {
                 </div>
 
                 <div className="li-title-div">
-                    Been here before? Welcome back!
+                    Welcome...
                 </div>
                 <div className="li-login-err-div">
                     {formatBackendErrors(backendErrors).map((error, idx) => (

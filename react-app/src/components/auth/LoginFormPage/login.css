@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    background-color: #151129;
+    background-color: #0d0a1c;
 }
 
 .li-left-pane-main {
@@ -80,6 +80,7 @@
     padding-top: 60px;
     font-size: 20px;
     font-weight: bold;
+    color: #00da86;
 }
 
 .li-logo-div {
@@ -137,25 +138,28 @@
     height: 48px;
     border-radius: 4px;
     margin-top: 1px;
-
+    background-color: #0b2011e6;
 }
 
 .li-valid {
-    border: 1px solid rgb(211, 211, 211);
+    border: 1px solid #665e93;
 }
 
 .li-hasError{
     border: 1px solid #ea4200;
-    background-color: #ffeade;
+    background-color: #a99a91;
 }
 
+.li-hasError > input{
+    color:#151129;
+}
 /* .li-pseudo-input:hover {
     border: 1px solid rgb(83, 83, 83);
 } */
 
 .li-pseudo-input.li-valid:focus-within {
-    border: 1px solid rgb(72, 69, 188);
-    box-shadow: 0px 0px 4px 2px rgba(72, 69, 188, 0.25);
+    border: 1px solid rgb(0, 218, 134);
+    box-shadow: 0px 0px 4px 2px rgba(0, 218, 134, 0.25);
     transition-duration: 0.25s;
 }
 
@@ -174,6 +178,7 @@
     border: none;
     font-size: 20px;
     background-color: transparent;
+    color:#00da86;
 
 }
 
@@ -202,7 +207,7 @@
     width: 400px;
     border-radius: 4px;
     border: none;
-    background-color: #665e93;
+    background-color: #2b287a;
     color: #00da86;
     font-size: 20px;
     font-weight: bold;
@@ -210,7 +215,8 @@
 }
 
 .li-login-btn:hover {
-    background-color: #2b287a;
+    background-color: #665e93;
+
 }
 
 

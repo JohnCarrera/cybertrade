@@ -61,7 +61,7 @@ function App() {
                         <StockDetail />
                     </Route>
                 </ProtectedRoute>
-                <ProtectedRoute path='/' exact={true} >
+                {/* <ProtectedRoute path='/' exact={true} >
                     <div className='main-body'>
                         <div className='upper'>
                             <h1>My Home Page</h1>
@@ -82,7 +82,7 @@ function App() {
                             ))}
                         </div>
                     </div>
-                </ProtectedRoute>
+                </ProtectedRoute> */}
             </Switch >
         </BrowserRouter >
     );

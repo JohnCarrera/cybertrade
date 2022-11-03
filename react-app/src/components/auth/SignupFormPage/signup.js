@@ -139,13 +139,13 @@ function SignupFormPage() {
             </div>
             <div className="su-right-pane-main">
                 <div className="su-login-btn-div">
-                    <Link to='/login'>
-                        <button className="su-login-btn">Log in</button>
+                    <Link className='su-login-link-wrap' to='/login'>
+                        <button className="su-login-btn">{'< Log in >'}</button>
                     </Link>
                 </div>
 
                 <div className="su-title-div">
-                    Sign up for free.
+                    Create an account...
                 </div>
                 <div className="su-login-err-div">
                     {formatBackendErrors(backendErrors).map((error, idx) => (
@@ -249,7 +249,7 @@ function SignupFormPage() {
                                 className="su-signup-btn"
                                 type="submit"
                             >
-                                Sign Up!
+                                Sign Up
                             </button>
                         </div>
                     </div>
