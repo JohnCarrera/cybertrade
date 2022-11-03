@@ -4,7 +4,7 @@
     padding-top: 50px;
     display: flex;
     flex-direction: row;
-    background-color: #241f3d;
+    background-color: #0d0a1c;
     /* align-items: center; */
 }
 
@@ -31,15 +31,84 @@
 }
 
 .sd-main-rt-img-block{
-    height: 320px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
     width : 800px;
     margin-top: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #151129;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #00da86;
+}
+
+.sd-chart-detail-text{
+    color: #00da86;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.sd-stock-about{
+    box-sizing: border-box;
+    margin-top: 30px;
+    background-color: #151129;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:800px;
+    padding: 20px;
+    border: 1px solid #00da86;
+
+
+}
+.sd-stock-about-title{
+    font-weight: bold;
+    font-size: 18px;
+    color: #00da86;
+    margin-bottom: 15px;
+}
+
+.sd-stock-about-p{
+    color: #958dc5;
+    text-align: justify;
+}
+
+.sd-chart-top-banner{
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-height: 100px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.sd-stock-logo-div{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    background-color: #665e93;
+    align-items: center;
+    height: 80%;
+    min-width: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    /* border: 1px solid #958dc5; */
     border-radius: 4px;
+    margin-top: 20px;
+    /* background-color: #000; */
+}
+.sd-stock-logo {
+    border-radius: 4px;
+    object-fit: scale-down;
+    height: 50px;
+    width: auto;
 }
 
 .sd-main-rt-info{
@@ -47,11 +116,19 @@
     width : 800px;
     margin-top: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #665e93;
+    justify-content: flex-start;
+    background-color: #151129;
     border-radius: 4px;
+    border: 1px solid #00da86;
+
+}
+
+.sd-stock-chart-img{
+    object-fit:fill;
+    height: 100%;
+    width: 100%;
 }
 
 

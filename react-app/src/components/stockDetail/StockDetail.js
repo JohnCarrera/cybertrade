@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import WatchlistPanel from '../watchlist/WatchlistPanel';
 import { getWatchlists, addStockToWatchlist } from '../../store/watchlists';
+import stockChartImg from '../../img/stock-chart.png';
 import './stockDetail.css';
 
 export default function StockDetail() {
@@ -29,49 +30,68 @@ export default function StockDetail() {
         dispatch(addStockToWatchlist(selectedWL, symbol))
     }
 
-    return ( stock &&
-            <div className='sd-main'>
-                <div className='sd-main-rt'>
-                    <div className='sd-main-rt-welc db-font-title'
-                    >
-                        {stock.longName}
-                    </div>
-                    <div className='sd-main-rt-img-block'>
-
-                    </div>
-                    <div className='sd-main-rt-info db-font'>
-                        <div>
-                            <form onSubmit={addToWlSubmit}>
-
-                                <select
-                                    className='sd-sel-wl'
-                                    value={selectedWL}
-                                    onChange={(e) => setSelectedWL(e.target.value)}
-                                >
-                                    <option value=''>Watchlist</option>
-                                    {watchlists &&
-                                        Object.values(watchlists).map((wl) =>
-                                            <option
-                                                key={wl.id}
-                                                value={wl.id}
-                                            >
-                                                {wl.name}
-                                            </option>
-                                        )}
-                                </select>
-                                <button
-                                    className='sd-add-btn'
-                                    type='submit'
-                                >
-                                    Add</button>
-                            </form>
-                        </div >
-
-                    </div>
+    return (stock &&
+        <div className='sd-main'>
+            <div className='sd-main-rt'>
+                <div className='sd-main-rt-welc db-font-title'
+                >
+                    {stock.longName}
                 </div>
-                <div className='sd-main-lf'>
-                    <WatchlistPanel />
+                <div className='sd-main-rt-img-block'>
+                    <div className='sd-chart-top-banner'>
+
+                        <div className='sd-chart-detail-text'>
+                            {stock.symbol} {' - '} {'1Y'}
+                        </div>
+                        <div className='sd-stock-logo-div'>
+                            <img className='sd-stock-logo' src={stock.logo_url} />
+                        </div>
+                    </div>
+
+                    <img className='sd-stock-chart-img' src={stockChartImg} />
+                </div>
+                <div className='sd-stock-about'>
+                    <div className='sd-stock-about-title'>
+                        {stock.symbol + ' '}Business Summary
+                    </div>
+
+                    <p className='sd-stock-about-p'>
+                        {stock.longBusinessSummary}
+                    </p>
+                </div>
+                <div className='sd-main-rt-info db-font'>
+                    <div>
+                        <form onSubmit={addToWlSubmit}>
+
+                            <select
+                                className='sd-sel-wl'
+                                value={selectedWL}
+                                onChange={(e) => setSelectedWL(e.target.value)}
+                            >
+                                <option value=''>Watchlist</option>
+                                {watchlists &&
+                                    Object.values(watchlists).map((wl) =>
+                                        <option
+                                            key={wl.id}
+                                            value={wl.id}
+                                        >
+                                            {wl.name}
+                                        </option>
+                                    )}
+                            </select>
+                            <button
+                                className='sd-add-btn'
+                                type='submit'
+                            >
+                                Add</button>
+                        </form>
+                    </div >
+
                 </div>
             </div>
+            <div className='sd-main-lf'>
+                <WatchlistPanel />
+            </div>
+        </div>
     )
 }
