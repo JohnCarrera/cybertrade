@@ -1,4 +1,4 @@
-import xRapidKey from '../data/xRapid.json';
+// import xRapidKey from '../data/xRapid.json';
 
 const UPDATE_PRICES = 'stocks/UPDATE_PRICES';
 const LOAD_ALL = 'stocks/LOAD_ALL';
@@ -94,31 +94,31 @@ export const startDataStream = (id) => async (dispatch) => {
     return res;
 }
 
-export const getStockDetailApi = (sym) => async (dispatch) => {
-    const encodedParams = new URLSearchParams();
-    encodedParams.append("symbol", sym);
-    const options = {
-	method: 'POST',
-	headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': xRapidKey.key,
-		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
-	},
-	body: encodedParams
-};
-    const res = await fetch(
-        `https://yahoo-finance97.p.rapidapi.com/stock-info`,
-        options
-    );
+// export const getStockDetailApi = (sym) => async (dispatch) => {
+//     const encodedParams = new URLSearchParams();
+//     encodedParams.append("symbol", sym);
+//     const options = {
+// 	method: 'POST',
+// 	headers: {
+// 		'content-type': 'application/x-www-form-urlencoded',
+// 		'X-RapidAPI-Key': xRapidKey.key,
+// 		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
+// 	},
+// 	body: encodedParams
+// };
+//     const res = await fetch(
+//         `https://yahoo-finance97.p.rapidapi.com/stock-info`,
+//         options
+//     );
 
-    if (res.ok) {
-        const stockDetail = await res.json();
-        console.log('stockDetail for ', sym, ':', stockDetail);
-        dispatch(loadOne(stockDetail.data));
-        return stockDetail;
-    }
-    return res;
-}
+//     if (res.ok) {
+//         const stockDetail = await res.json();
+//         console.log('stockDetail for ', sym, ':', stockDetail);
+//         dispatch(loadOne(stockDetail.data));
+//         return stockDetail;
+//     }
+//     return res;
+// }
 
 const initialState = {
                         allStocks: null,
