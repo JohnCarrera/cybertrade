@@ -52,7 +52,7 @@
     color: #1883fd
 }
 
-.wl-del-div {
+.wl-icon-div {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -60,13 +60,19 @@
     color: #00da86;
 }
 
-.wl-del-div:active{
+.wl-icon-div:active{
     transform: scale(.85);
 }
 
-.wl-del-div:hover{
+
+.wl-icon-div:hover{
     color: #d154ff;
     cursor:pointer;
+}
+
+.wl-del-div{
+    box-sizing: border-box;
+    padding-top: 3px;
 }
 
 .wl-header {
@@ -78,4 +84,43 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 6px;
+}
+
+.wl-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    padding-right: 1px;
+}
+
+.wl-edit-form-div{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 8px;
+    background-color: #0b2011e6;
+    /* border: 1px solid #00da86; */
+    border-radius: 3px;
+    height: 0px;
+    margin-bottom: 8px;
+    width: 99%;
+    padding-right: 10px;
+    overflow: hidden;
+    transition-duration: 0.5s;
+}
+
+.wl-edit-form{
+    width: 100%;
+}
+
+.wl-rename-input{
+    background-color: transparent;
+    color: #00da86;
+    border: none;
+    width: 100%;
+    min-width: 99%;
 }
