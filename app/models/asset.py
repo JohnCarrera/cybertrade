@@ -5,7 +5,7 @@ class Asset(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    symbol = db.Column(db.String(6), db.ForeignKey("stocks.id"), nullable=False)
+    symbol = db.Column(db.String(6), db.ForeignKey("stocks.symbol"), nullable=False)
     type = db.Column(db.String(50), nullable=False)
     value = db.Column(db.Float, nullable=True)
     quantity = db.Column(db.Float, nullable = False)
