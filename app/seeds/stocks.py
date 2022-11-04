@@ -1626,6 +1626,7 @@ def seed_stocks():
     db.session.add(TWTR)
     db.session.add(SNOW)
     db.session.add(TXN)
+    db.session.add(_CASH)
 
     db.session.commit()
 
