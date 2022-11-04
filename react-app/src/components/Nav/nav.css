@@ -11,25 +11,3 @@
     border-bottom: 2px solid #00da86
 
 }
-
-.nav-text{
-    color: #00da86;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.nav-text:hover{
-    color:#d154ff
-}
-
-.nav-icon{
-    /* margin-right: 10px; */
-
-}
-
-.nav-logo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 10px;
-}

@@ -1,0 +1,27 @@
+.nl-main-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    cursor: pointer;
+    width: 160px;
+    height: 50px;
+}
+
+.nl-logo-img{
+    height: 30px;
+    width: auto;
+}
+
+.nl-name-logo{
+    padding-top: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00da86;
+}
+
+  .nl-link-wrap{
+    text-decoration: none;
+    color:currentColor;
+  }

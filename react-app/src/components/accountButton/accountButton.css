@@ -1,0 +1,18 @@
+.ab-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+    width: 200px;
+}
+
+.ab-btn-text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #00da86;
+}
+
+.ab-btn-text:hover{
+    cursor: pointer;
+}

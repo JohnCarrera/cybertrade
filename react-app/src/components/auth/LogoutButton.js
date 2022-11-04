@@ -8,12 +8,12 @@ const LogoutButton = ({ classProp }) => {
         await dispatch(logout());
     };
 
-    return <button
+    return <div
         className={classProp}
         onClick={onLogout}
         >
-            Logout
-        </button>;
+            /logout
+        </div>;
 };
 
 export default LogoutButton;

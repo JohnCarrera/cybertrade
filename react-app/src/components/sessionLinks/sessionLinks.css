@@ -1,0 +1,23 @@
+.sl-top-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+    width: 200px;
+    height: 100%;
+}
+
+.sl-nav-btn-text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #00da86;
+}
+
+.sl-link-wrap{
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+    color:currentColor;
+    text-decoration-line: none;
+  }
