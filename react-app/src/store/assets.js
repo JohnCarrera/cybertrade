@@ -18,9 +18,9 @@ const add = asset => ({
     asset
 });
 
-const remove = id => ({
+const remove = asset => ({
     type: REMOVE,
-    id
+    asset
 })
 
 export const loadAssets = () => async (dispatch) => {
@@ -100,6 +100,7 @@ export const removeAsset = (id) => async (dispatch) => {
 
     if(res.ok) {
         const asset = await res.json();
+        console.log('------------------------',asset);
         dispatch(remove(asset));
         return res;
     }
@@ -121,7 +122,7 @@ export const assetReducer = (state = initialState, action) => {
             return action.assets
         case REMOVE:
             const newState = {...state}
-            delete newState[action.id]
+            delete newState[action.asset.symbol]
             return newState
         default:
             return state
