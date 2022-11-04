@@ -22,7 +22,7 @@ class Stock(db.Model):
     city = db.Column(db.String(50))
     country = db.Column(db.String(50))
     debtToEquity = db.Column(db.Float)
-    ebitda = db.Column(db.Integer)
+    ebitda = db.Column(db.BigInteger)
     fiftyDayAverage = db.Column(db.Float)
     fiftyTwoWeekHigh = db.Column(db.Float)
     fiftyTwoWeekLow = db.Column(db.Float)

@@ -21,8 +21,11 @@ export default function StockDetail() {
     useEffect(() => {
         dispatch(getWatchlists());
         // dispatch(getStockDetailApi(symbol));
-        dispatch(getSingleStock(symbol));
     }, dispatch);
+
+    useEffect(() => {
+        dispatch(getSingleStock(symbol));
+    },[symbol])
 
     const addToWlSubmit = (e) => {
         e.preventDefault();
