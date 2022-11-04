@@ -1,0 +1,124 @@
+.spl-main-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.spl-top-nav {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    border-bottom: 1px solid #00da86;
+    background-color: #0d0a1c;
+}
+
+.spl-body {
+    box-sizing: border-box;
+    position: absolute;
+    top: 64px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    background-color: #6255a2;
+    overflow: hidden;
+}
+
+.spl-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spl-gs-div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 20px;
+    top: 150px;
+    right: 300px;
+}
+
+.spl-bg-text {
+    margin-right: 60px;
+    font-weight: bold;
+    font-size: 30px;
+    color: #00da86;
+}
+
+.spl-gs-btn{
+
+    background-color: #00da86;
+    border: 1px solid #00da86;
+    color: #0d0a1c;
+    width: 120px;
+    height: 36px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.spl-gs-btn:hover{
+    color: #00da86;
+    background-color: #0b2011;
+    cursor: pointer;
+}
+
+.spl-gs-btn:active{
+    transform: scale(0.9);
+}
+
+.spl-bot-nav {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-self: start;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #0d0a1c;
+    border-top: 1px solid #00da86;
+}
+
+.spl-bot-name{
+    color: #00da86;
+    font-size: 16px;
+}
+
+.spl-bot-rt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+}
+
+.spl-bot-link-icon{
+    color: #00da86;
+}
+
+.spl-bot-link-icon:hover{
+    color: #d154ff;
+    cursor: pointer;
+}
+
+.spl-bot-link-icon:active{
+    transform: scale(.9);
+}

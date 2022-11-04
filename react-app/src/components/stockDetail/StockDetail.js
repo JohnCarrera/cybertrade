@@ -92,6 +92,7 @@ export default function StockDetail() {
 
                 </div>
             </div>
+
             <div className='sd-main-lf'>
                 <WatchlistPanel />
             </div>

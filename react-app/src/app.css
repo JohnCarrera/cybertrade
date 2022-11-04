@@ -56,3 +56,23 @@
     height:fit-content;
     width: fit-content;
 }
+
+.cyber-grad{
+    background: linear-gradient(to right, #00da86, rgb(220, 20, 160),rgb(0, 94, 255), #00da86);
+    background-size: 200% 200%;
+    animation: cybergradient 2s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip:text;
+    display:block;
+    transition: color .2s ease-in-out;
+}
+
+.cyber-grad:hover{
+    color:rgba(0,0,0,0);
+  }
+
+@keyframes cybergradient {
+    50%{background-position:left}
+    50%{background-position:right}
+    100%{background-position:left}
+  }

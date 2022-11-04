@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Splash from './components/splash/Splash';
 import Nav from './components/Nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
 import StockDetail from './components/stockDetail/StockDetail';
@@ -61,8 +62,9 @@ function App() {
                         <StockDetail />
                     </Route>
                 </ProtectedRoute>
-                {/* <ProtectedRoute path='/' exact={true} >
-                    <div className='main-body'>
+                <Route path='/' exact={true} >
+                    <Splash/>
+                    {/* <div className='main-body'>
                         <div className='upper'>
                             <h1>My Home Page</h1>
                             <h1> STATUS: {stream ? 'Online' : 'Offline'}</h1>
@@ -81,8 +83,8 @@ function App() {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                </ProtectedRoute> */}
+                    </div> */}
+                </Route>
             </Switch >
         </BrowserRouter >
     );
