@@ -94,7 +94,7 @@ function LoginFormPage() {
         return errs;
     }
 
-    return (
+    return ( cityImg &&
         <div className="li-main-page-div">
             <div className="li-left-pane-main">
                 {/* <Link to='/'>

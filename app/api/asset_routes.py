@@ -86,21 +86,25 @@ def update_asset(ass_id):
             "statusCode": 403}, 403
 
     form = AssetForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        form_data = form.data
+        print('form validated')
 
         asset.symbol = form_data['symbol']
         asset.type = form_data['type']
-        asset.price = form_data['price']
+        asset.value = form_data['value']
         asset.quantity = form_data['quantity']
 
         db.session.commit()
 
         return asset.to_dict()
+    return {'error': 'operation failed'}, 400
 
 
 @asset_routes.route('/<int:ass_id>', methods=['DELETE'])
 @login_required
-def remove_asset():
+def remove_asset(ass_id):
 
     asset = Asset.query.get(ass_id)
 
@@ -119,4 +123,5 @@ def remove_asset():
 
     return {
         "message": "Successfully deleted",
+        "symbol": asset.symbol,
         "statusCode": 200}

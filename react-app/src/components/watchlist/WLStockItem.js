@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeStockFromWatchlist } from '../../store/watchlists';
 import { createTransaction } from '../../store/transactions';
-import { addAsset, updateAsset, updateCashBalance } from '../../store/assets';
+import { addAsset, updateAsset, updateCashBalance, removeAsset } from '../../store/assets';
 import './wlStockItem.css';
 
 export default function WLStockItem({ stock, price, wlid, balance, asset }) {
@@ -41,20 +41,52 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
             }
 
             if (asset) {
-                assetData.qty = Number(asset.quantity) + Number(qty)
+                console.log('assetTrue:', asset)
+                assetData.quantity = Number(asset.quantity) + Number(qty)
                 dispatch(updateAsset(asset.id, assetData))
             } else {
-                assetData.quantity = qty
+                console.log('assetFalse:', asset)
+                assetData.quantity = Number(qty)
                 dispatch(addAsset(assetData))
             }
-
         }
     }
 
-    const sellClick = e => {
+    const sellClick = async e => {
         e.preventDefault()
 
+        dispatch(updateCashBalance(balance + (qty * price)))
+
+        console.log('balance!:', balance)
+
+        const data = {
+            symbol: stock.symbol,
+            price: price,
+            quantity: +qty,
+            balance: balance + (qty * price)
+        }
+
+        const tr = await dispatch(createTransaction(data))
+
+        if (tr) {
+
+            const assetData = {
+                symbol: stock.symbol,
+                type: 'STOCK',
+                value: price,
+            }
+
+            if (asset) {
+                if (Number(asset.quantity) - Number(qty) <= 0){
+                    dispatch(removeAsset(asset.id))
+                } else {
+                    console.log('sellassetTrue:', asset)
+                    assetData.quantity = Number(asset.quantity) - Number(qty)
+                    dispatch(updateAsset(asset.id, assetData))
+                }
+            }
     }
+}
 
     return (
         <tr className='wlsi-tr-main'>
