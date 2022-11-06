@@ -1,16 +1,36 @@
-
 * {
     margin: 0;
     font-family: 'Share Tech Mono', monospace;
 }
 
 *:focus {
-    outline:none;
+    outline: none;
 }
 
-.stock-chart{
+
+
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+    background-color: #151129;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+    background: hsla(284, 100%, 66%, 0.063);
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+    background: #d154ff46;
+}
+
+/* .stock-chart{
     width: 200px;
-    /* height: 500px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +52,6 @@
     width:50%;
     height:100%;
     border: 1px solid #00da86;
-    /* color: #00da86 */
 }
 
 .stock-price{
@@ -43,7 +62,6 @@
     width:50%;
     height:100%;
     border: 1px solid grey;
-    /* color: # ; */
 }
 
 .main-body{
@@ -55,24 +73,32 @@
 .upper{
     height:fit-content;
     width: fit-content;
-}
+} */
 
-.cyber-grad{
-    background: linear-gradient(to right, #00da86, rgb(220, 20, 160),rgb(0, 94, 255), #00da86);
+.cyber-grad {
+    background: linear-gradient(to right, #00da86, rgb(220, 20, 160), rgb(0, 94, 255), #00da86);
     background-size: 200% 200%;
     animation: cybergradient 2s ease-in-out infinite;
     background-clip: text;
-    -webkit-background-clip:text;
-    display:block;
+    -webkit-background-clip: text;
+    display: block;
     transition: color .2s ease-in-out;
 }
 
-.cyber-grad:hover{
-    color:rgba(0,0,0,0);
-  }
+.cyber-grad:hover {
+    color: rgba(0, 0, 0, 0);
+}
 
 @keyframes cybergradient {
-    50%{background-position:left}
-    50%{background-position:right}
-    100%{background-position:left}
-  }
+    50% {
+        background-position: left
+    }
+
+    50% {
+        background-position: right
+    }
+
+    100% {
+        background-position: left
+    }
+}

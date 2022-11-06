@@ -1,1 +1,3 @@
 - account dropdown menu
+
+- fix chart position/crop on stock detail page

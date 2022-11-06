@@ -1,10 +1,16 @@
 .db-main{
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
     box-sizing: border-box;
-    height: 1500px;
     padding-top: 50px;
     display: flex;
     flex-direction: row;
     background-color:  #0d0a1c;
+    z-index: -1;
     /* align-items: center; */
 }
 
