@@ -47,6 +47,8 @@ export default function StockDetail({ stocks }) {
     }
 
     return (stock &&
+        // <div className='sd-page'>
+        // <div className='sd-page'>
         <div className='sd-main'>
             <div className='sd-main-lf'>
                 <div className='sd-main-rt-welc db-font-title'>
@@ -337,5 +339,7 @@ export default function StockDetail({ stocks }) {
                 <WatchlistPanel />
             </div>
         </div>
+            // {/* <div className='bot-padding'></div>
+            // </div> */}
     )
 }

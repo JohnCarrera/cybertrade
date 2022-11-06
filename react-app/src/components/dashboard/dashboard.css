@@ -9,6 +9,7 @@
     padding-top: 50px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     background-color:  #0d0a1c;
     z-index: -1;
     /* align-items: center; */
@@ -27,7 +28,7 @@
     flex-direction: column;
     align-items: center;
     margin-right: 50px;
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 
 .db-main-img{

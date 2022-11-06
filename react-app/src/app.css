@@ -1,6 +1,11 @@
 * {
     margin: 0;
     font-family: 'Share Tech Mono', monospace;
+    /* background-color: #0d0a1c; */
+}
+
+#site{
+    background-color: #0d0a1c;
 }
 
 *:focus {
