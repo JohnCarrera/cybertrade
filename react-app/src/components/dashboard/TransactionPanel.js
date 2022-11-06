@@ -8,6 +8,11 @@ export default function TransactionPanel({transactions}) {
             let nums = num.toString().split('.')
             let n1 = nums[0];
             let n2 = nums[1];
+
+            if (n2.length > 2){
+                n2 = n2.substring(0,2)
+            }
+
             n2 = n2.padEnd(2, '0')
             return `${n1}.${n2}`
         }

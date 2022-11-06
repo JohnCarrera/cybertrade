@@ -1,9 +1,9 @@
 
 - finish stock detail page
 
--signup length validations
-
 -custom 404
+
+-fix or remove 'side' on transaction panel
 
 -center content on main pages
 -add pad/trim method to WL stock item to make sure prices don't exceed 2 decimal places

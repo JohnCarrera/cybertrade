@@ -55,7 +55,7 @@ export default function AccountButton() {
     return (user &&
         <div className='ab-main'>
             {!location.pathname.includes('dashboard') &&
-                <Link to='/app/dashboard' className='ab-link-wrap'>
+                <Link to='/app/dashboard/overview' className='ab-link-wrap'>
                     <div className='ab-dash-btn ab-btn-text cyber-grad'>
                         /dashboard
                     </div>
@@ -111,10 +111,6 @@ export default function AccountButton() {
                         {'CONNECTED'}
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     )

@@ -3,7 +3,39 @@ import './overview.css';
 
 export default function OverviewPanel({ assetVal, cashVal, assets, transactions }) {
 
-    console.log('op-trans:', transactions)
+
+    const calcAssets = () => {
+        let asset = {
+            max: 0,
+            symbol: ''
+        }
+        for (const assetKey in assets){
+            if (assetKey !== '_CASH'){
+                let cur = assets[assetKey].quantity * assets[assetKey].value
+                if ( cur > asset.max) {
+                    asset.max = cur;
+                    asset.symbol = assetKey
+                }
+            }
+        }
+        return asset
+    }
+
+    function convertPad(num) {
+        if (num.toString().includes('.')) {
+            let nums = num.toString().split('.')
+            let n1 = nums[0];
+            let n2 = nums[1];
+
+            if (n2.length > 2){
+                n2 = n2.substring(0,2)
+            }
+
+            n2 = n2.padEnd(2, '0')
+            return `${n1}.${n2}`
+        }
+        return String(num) + '.00'
+    }
 
     return (
         <div className='op-main'>
@@ -36,7 +68,7 @@ export default function OverviewPanel({ assetVal, cashVal, assets, transactions 
                  Highest Valued Asset:
                 </div>
                 <div className='op-row-val op-font'>
-                    calulated highest valued asset
+                    {convertPad(calcAssets().max)}
                 </div>
             </div>
             <div className='op-row'>
