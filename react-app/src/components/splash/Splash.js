@@ -28,7 +28,7 @@ export default function Splash() {
                         ?
                         <Link
                             className='spl-link-wrap'
-                            to='/app/dashboard'
+                            to='/app/dashboard/overview'
                         >
                             <button className='spl-gs-btn'>
                                 dashboard
