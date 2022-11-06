@@ -5,6 +5,9 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+
+import { getAllStocks } from './store/stocks';
+
 import Splash from './components/splash/Splash';
 import Nav from './components/Nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
@@ -22,6 +25,7 @@ function App() {
 
     const prices = useSelector(state => state.stocks.prices)
     const stream = useSelector(state => state.stocks.stream)
+    const stocks = useSelector(state => state.stocks.allStocks)
 
     useEffect(() => {
         (async () => {
@@ -30,6 +34,11 @@ function App() {
             // dispatch(updateStockPrices());
         })();
     }, [dispatch]);
+
+
+    useEffect(() => {
+        dispatch(getAllStocks());
+    },[dispatch])
 
     if (!loaded) {
         return null;
@@ -43,7 +52,7 @@ function App() {
         dispatch(updateStockPrices());
     }
 
-    return (
+    return ( stocks &&
         <BrowserRouter>
             <Switch>
                 <Route path='/login' exact={true}>
@@ -54,16 +63,16 @@ function App() {
                 </Route>
 
                 <ProtectedRoute path='/app'>
-                    <Nav />
+                    <Nav stocks={stocks}/>
                     <Route path='/app/dashboard'>
-                        <Dashboard />
+                        <Dashboard stocks={stocks}/>
                     </Route>
                     <Route path='/app/stocks/:symbol'>
-                        <StockDetail />
+                        <StockDetail stocks={stocks} />
                     </Route>
                 </ProtectedRoute>
                 <Route path='/' exact={true} >
-                    <Splash/>
+                    <Splash stocks={stocks}/>
                     {/* <div className='main-body'>
                         <div className='upper'>
                             <h1>My Home Page</h1>
@@ -84,6 +93,9 @@ function App() {
                             ))}
                         </div>
                     </div> */}
+                </Route>
+                <Route path='/rip'>
+                    <div>404</div>
                 </Route>
             </Switch >
         </BrowserRouter >

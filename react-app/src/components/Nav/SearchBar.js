@@ -72,8 +72,10 @@ export default function SearchBar() {
 
             if (stocks) {
                 let sr = Object.values(stocks).filter((stock) => {
+                    if (stock.symbol !== '_CASH'){
                     return stock.symbol.toLowerCase().includes(searchInput.toLowerCase())
                         || stock.name.toLowerCase().includes(searchInput.toLowerCase())
+                    }
                 })
                 console.log(sr)
                 setSearchResults(sr)

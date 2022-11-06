@@ -1,6 +1,9 @@
 .tp-main{
+    width: 100%;
+    box-sizing: border-box;
     padding: 30px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 90%;
     height: 95%
 }

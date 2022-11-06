@@ -11,13 +11,12 @@ import './dashboard.css';
 
 
 
-export default function Dashboard() {
+export default function Dashboard({stocks}) {
 
     const dispatch = useDispatch();
     const cash = useSelector(state => state.assets._CASH);
     const assets = useSelector(state => state.assets);
     const transactions = useSelector(state => state.transactions);
-    const stocks = useSelector(state => state.stocks.allStocks);
 
     const calculateAssetValue = () => {
 
@@ -48,10 +47,8 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-
         dispatch(loadAssets());
         dispatch(loadTransactions());
-        dispatch(getAllStocks());
     }, [dispatch])
 
 

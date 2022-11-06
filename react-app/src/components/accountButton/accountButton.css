@@ -1,10 +1,11 @@
 .ab-main{
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     column-gap: 30px;
-    width: 200px;
+    width: 300px;
 }
 
 .ab-btn-text{
@@ -15,4 +16,22 @@
 
 .ab-btn-text:hover{
     cursor: pointer;
+}
+
+.ab-link-wrap{
+    color: currentColor;
+    text-decoration: none;
+}
+
+.ab-ab-menu{
+    position: absolute;
+    right: -10px;
+    top: 41px;
+    height: 0px;
+    width: 0px;
+    background-color: rgb(11, 32, 17, .9);
+    color: #00da86;
+    overflow: hidden;
+    border-radius: 4px;
+    transition-duration: .25s;
 }

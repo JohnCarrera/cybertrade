@@ -3,3 +3,12 @@
 - add link wrap to stock ticker symbol in wl
 
 - finish stock detail page
+
+-remove cash from watchlist
+-remove cash from search (possibly by filtering on backend)
+
+-add pad/trim method to WL stock item to make sure prices don't exceed 2 decimal places
+
+-validations for adding to wl
+
+-custom 404
