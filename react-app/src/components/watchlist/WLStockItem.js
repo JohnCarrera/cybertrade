@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { removeStockFromWatchlist } from '../../store/watchlists';
 import { createTransaction } from '../../store/transactions';
 import { addAsset, updateAsset, updateCashBalance, removeAsset } from '../../store/assets';
@@ -62,7 +63,7 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
         const data = {
             symbol: stock.symbol,
             price: price,
-            quantity: +qty,
+            quantity: +qty * -1,
             balance: balance + (qty * price)
         }
 
@@ -92,7 +93,9 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
         <tr className='wlsi-tr-main'>
 
             <td className='wlsi-sym wlsi-text'>
+                <Link className='wlsi-sym-link cyber-grad' to={`/app/stocks/${stock.symbol}`}>
                 {stock.symbol}
+                </Link>
             </td>
             {/* <div className='wlsi-name'>
                 {stock.name}

@@ -86,3 +86,12 @@
 .wlsi-price{
     color: #00da86
 }
+
+.wlsi-sym-link{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.wlsi-sym-link:hover{
+    cursor: pointer;
+}
