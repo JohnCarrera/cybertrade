@@ -214,13 +214,16 @@
     cursor: pointer;
 }
 
-.li-login-btn:hover {
+.li-login-btn:hover:enabled {
     background-color: #665e93;
 
 }
 
+.li-login-btn:disabled{
+    background-color: gray;
+    color: white;
+}
 
-
-.li-login-btn:active {
+.li-login-btn:active:enabled {
     transform: scale(0.95);
 }

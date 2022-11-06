@@ -245,12 +245,16 @@
     cursor: pointer;
 }
 
-.su-signup-btn:hover {
+.su-signup-btn:hover:enabled{
     background-color: #665e93;
 }
 
+.su-signup-btn:disabled{
+    background-color: gray;
+    color: white;
+}
 
 
-.su-signup-btn:active {
+.su-signup-btn:active:enabled{
     transform: scale(0.95);
 }

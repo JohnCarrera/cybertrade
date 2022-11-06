@@ -52,6 +52,15 @@ function LoginFormPage() {
         renderErrors
     ]);
 
+
+    const checkErrors = () => {
+        if (!credentialErr &&
+            !passErr
+        ) {
+            return false
+        } else return true
+    }
+
     if (sessionUser) return <Redirect to="/" />;
 
     const demoUserBtnClick = (e) => {
@@ -161,6 +170,7 @@ function LoginFormPage() {
                             <button
                                 className="li-login-btn"
                                 type="submit"
+                                disabled={checkErrors()}
                             >
                                 Log in
                             </button>

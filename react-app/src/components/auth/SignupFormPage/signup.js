@@ -45,12 +45,18 @@ function SignupFormPage() {
         if (!firstName.length) {
             setFirstNameErr('First name is required');
             renderErrors ? setFnErrClass('su-hasError') : setFnErrClass('su-valid');
+        } else if (firstName.length && firstName.includes(' ')) {
+            setFirstNameErr('Spaces are not allowed here');
+            renderErrors ? setFnErrClass('su-hasError') : setFnErrClass('su-valid');
         } else {
             setFirstNameErr('');
             setFnErrClass('su-valid');
         }
         if (!lastName.length) {
             setLastNameErr('Last name required');
+            renderErrors ? setLnErrClass('su-hasError') : setLnErrClass('su-valid');
+        } else if (lastName.length && lastName.includes(' ')) {
+            setLastNameErr('Spaces are not allowed here');
             renderErrors ? setLnErrClass('su-hasError') : setLnErrClass('su-valid');
         } else {
             setLastNameErr('');
@@ -81,6 +87,17 @@ function SignupFormPage() {
         confirmPassword,
         renderErrors
     ]);
+
+    const checkErrors = () =>  {
+        if (
+            !emailErr &&
+            !firstNameErr &&
+            !lastNameErr &&
+            !passErr &&
+            !confPassErr
+        ) { return false}
+        else return true
+    }
 
     if (sessionUser) return <Redirect to="/app/dashboard/overview" />;
 
@@ -260,6 +277,7 @@ function SignupFormPage() {
                             <button
                                 className="su-signup-btn"
                                 type="submit"
+                                disabled={checkErrors()}
                             >
                                 Sign Up
                             </button>
