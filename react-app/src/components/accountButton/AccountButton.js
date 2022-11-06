@@ -19,7 +19,7 @@ export default function AccountButton() {
 
     const openForm = () => {
         console.log('openform:', renderAmDiv)
-        amDiv.style.height = '100px';
+        amDiv.style.height = '130px';
         amDiv.style.width = '300px';
         amDiv.style.border = '1px solid #00da86';
         setRenderAmDiv(true);
@@ -52,7 +52,7 @@ export default function AccountButton() {
     }, [amRef]);
 
 
-    return ( user &&
+    return (user &&
         <div className='ab-main'>
             {!location.pathname.includes('dashboard') &&
                 <Link to='/app/dashboard' className='ab-link-wrap'>
@@ -73,19 +73,46 @@ export default function AccountButton() {
                 id='ab-menu-id'
                 ref={amRef}
             >
-                <pre>
-                {'     > cybertrade v1.951 build 3 < '}
-                </pre>
-                <br/>
-                {'> user info: ' + user.email}
-                <br/>
-                {'> first name: ' + user.first_name}
-                <br/>
-                {'> last name: ' + user.last_name}
-                {/* <br/>
-                {'> available cash:' }
-                <br/>
-                {'> total net worth:' } */}
+                <div className='am-title'>
+                    <div>
+                        {'> cybertrade v1.951 build 3 < '}
+                    </div>
+                </div>
+
+                <div className='am-line-item'>
+                    <div className='am-line-item-title'>
+                        {'> account: '}
+                    </div>
+                    <div className='am-line-item-val'>
+                        {user.email}
+                    </div>
+                </div>
+                <div className='am-line-item'>
+                    <div className='am-line-item-title'>
+                        {'> first_name: '}
+                    </div>
+                    <div className='am-line-item-val'>
+                        {user.first_name}
+                    </div>
+                </div>
+                <div className='am-line-item'>
+                    <div className='am-line-item-title'>
+                        {'> last_name: '}
+                    </div>
+                    <div className='am-line-item-val'>
+                        {user.last_name}
+                    </div>
+                </div>
+                <div className='am-line-item'>
+                    <div className='am-line-item-title'>
+                        {'> status: '}
+                    </div>
+                    <div className='am-line-item-stat'>
+                        {'CONNECTED'}
+                    </div>
+                </div>
+
+
 
 
             </div>
