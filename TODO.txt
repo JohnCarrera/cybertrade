@@ -1,8 +1,10 @@
 
 - finish stock detail page
 
+-signup length validations
+
 -custom 404
 
-
+-center content on main pages
 -add pad/trim method to WL stock item to make sure prices don't exceed 2 decimal places
 - add link wrap to stock ticker symbol in wl

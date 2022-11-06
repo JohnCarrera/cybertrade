@@ -173,6 +173,7 @@ function SignupFormPage() {
                                         placeholder="First Name"
                                         className="su-input-field"
                                         type="text"
+                                        maxLength={20}
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
                                     />
@@ -190,6 +191,7 @@ function SignupFormPage() {
                                     <input
                                         placeholder="Last Name"
                                         className="su-input-field"
+                                        maxLength={25}
                                         type="text"
                                         value={lastName}
                                         onChange={(e) => setLastName(e.target.value)}
@@ -210,6 +212,7 @@ function SignupFormPage() {
                                         className="su-input-field"
                                         type="text"
                                         value={email}
+                                        maxLength={30}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
@@ -228,6 +231,7 @@ function SignupFormPage() {
                                         className="su-input-field"
                                         type="password"
                                         value={password}
+                                        maxLength={30}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
@@ -246,6 +250,7 @@ function SignupFormPage() {
                                         className="su-input-field"
                                         type="password"
                                         value={confirmPassword}
+                                        maxLength={30}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                 </div>

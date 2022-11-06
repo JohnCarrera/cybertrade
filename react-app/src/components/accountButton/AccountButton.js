@@ -20,7 +20,7 @@ export default function AccountButton() {
     const openForm = () => {
         console.log('openform:', renderAmDiv)
         amDiv.style.height = '130px';
-        amDiv.style.width = '300px';
+        amDiv.style.width = '340px';
         amDiv.style.border = '1px solid #00da86';
         setRenderAmDiv(true);
         document.addEventListener('click', closeForm)
