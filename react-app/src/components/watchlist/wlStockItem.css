@@ -62,13 +62,13 @@
 }
 
 .wlsi-td-rem{
-    color: #1883fd;
+    color: #d154ff;
     cursor: pointer;
     text-align: center;
 }
 
 .wlsi-td-rem:hover{
-    color: #d154ff;
+    color: #1883fd;
 }
 
 .wlsi-td-rem:active{

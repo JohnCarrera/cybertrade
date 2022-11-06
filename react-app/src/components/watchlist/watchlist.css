@@ -16,6 +16,7 @@
 
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-left: 4px;
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
@@ -46,18 +47,13 @@
     color: #1883fd
 }
 
-.wl-th-x {
-    text-align: center;
-    font-weight: bold;
-    color: #1883fd
-}
-
 .wl-icon-div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     color: #00da86;
+    padding-right: 1px;
 }
 
 .wl-icon-div:active{
@@ -66,13 +62,18 @@
 
 
 .wl-icon-div:hover{
-    color: #d154ff;
+    color: #1883fd;
     cursor:pointer;
 }
 
 .wl-del-div{
+    color:#00da86;
     box-sizing: border-box;
     padding-top: 3px;
+}
+
+.wl-del-div:hover{
+    color:#d154ff
 }
 
 .wl-header {

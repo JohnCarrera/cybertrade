@@ -1,3 +1,5 @@
 - account dropdown menu
 
-- fix chart position/crop on stock detail page
+- add link wrap to stock ticker symbol in wl
+
+- finish stock detail page
