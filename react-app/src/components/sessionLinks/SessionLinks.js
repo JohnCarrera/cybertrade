@@ -22,7 +22,7 @@ export default function SessionLinks() {
                             /login
                         </div>
                     </Link>
-                    <Link to='/login' className='sl-link-wrap'>
+                    <Link to='/signup' className='sl-link-wrap'>
                         <div className='sl-nav-btn-text cyber-grad'>
                             /signup
                         </div>

@@ -33,6 +33,8 @@ export default function WatchlistPanel() {
         e.preventDefault();
         // e.stopPropagation();
         const data = { name: wlpCreateName }
+        setWlpCreateName('');
+        closeForm();
         dispatch(createWatchlist(data));
 
     }
@@ -89,7 +91,8 @@ export default function WatchlistPanel() {
                         className='wlp-name-input'
                         type='text'
                         value={wlpCreateName}
-                        placeholder='New watchlist name...'
+                        placeholder='New watchlist name (max 30 char.)'
+                        maxLength={30}
                         required={true}
                         onChange={(e) => setWlpCreateName(e.target.value)}
                     />

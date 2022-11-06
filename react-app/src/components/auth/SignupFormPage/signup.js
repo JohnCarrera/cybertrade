@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { addAsset } from "../../../store/assets";
 import * as sessionActions from "../../../store/session";
 import cityImg from '../../../img/cp-city-login2.jpg';
 import './signup.css';
@@ -81,7 +82,7 @@ function SignupFormPage() {
         renderErrors
     ]);
 
-    if (sessionUser) return <Redirect to="/app/tasks/all" />;
+    if (sessionUser) return <Redirect to="/app/dashboard/overview" />;
 
     const emailCheck = (str) => {
         return /\S+@\S+\.\S+/.test(str);
@@ -109,7 +110,13 @@ function SignupFormPage() {
                 });
 
             if (!response) {
-                history.push('/app/tasks/all')
+               await dispatch(addAsset({
+                    symbol: '_CASH',
+                    type:'CASH',
+                    value: 1,
+                    quantity: 50000,
+                }))
+                history.push('/app/dashboard/overview')
             }
             else {
                 const err = response.map(err => err.split(': ')[1])

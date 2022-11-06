@@ -77,7 +77,7 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
             }
 
             if (asset) {
-                if (Number(asset.quantity) - Number(qty) <= 0){
+                if (Number(asset.quantity) - Number(qty) <= 0) {
                     dispatch(removeAsset(asset.id))
                 } else {
                     console.log('sellassetTrue:', asset)
@@ -85,8 +85,8 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                     dispatch(updateAsset(asset.id, assetData))
                 }
             }
+        }
     }
-}
 
     return (
         <tr className='wlsi-tr-main'>
@@ -104,35 +104,40 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                 {asset ? asset.quantity : 0}
             </td>
             <td className='wlsi-ip'>
-                <input
-                    className='wlsi-qty'
-                    type='number'
-                    min={0}
-                    value={qty}
-                    onChange={e => setQty(e.target.value)}
-                />
-                <button
-                    className='wlsi-buy wlsi-ab'
-                    onClick={buyClick}
-                    disabled={
-                        Number(qty) && qty * price <= balance ? false : true
-                    }
-                >
-                    Buy
-                </button>
-                <button
-                    className='wlsi-sell wlsi-ab'
-                    onClick={sellClick}
-                    disabled={
-                        asset && Number(qty)
-                            ? (asset.quantity >= qty
-                                ? false
-                                : true)
-                            : true
-                    }
-                >
-                    Sell
-                </button>
+                    <input
+                        className='wlsi-qty'
+                        type='number'
+                        value={qty}
+                        onChange={e => setQty(e.target.value)}
+                    />
+                    <button
+                        className='wlsi-buy wlsi-ab'
+                        onClick={buyClick}
+                        type='submit'
+                        disabled={
+                            Number(qty) &&
+                            Number(qty) > 0 &&
+                            qty * price <= balance ? false : true
+                        }
+                    >
+                        Buy
+                    </button>
+                    <button
+                        className='wlsi-sell wlsi-ab'
+                        onClick={sellClick}
+                        type='submit'
+                        disabled={
+                            asset &&
+                            Number(qty) &&
+                            Number(qty) > 0 &&
+                            Number(qty) ? (asset.quantity >= qty
+                                    ? false
+                                    : true)
+                                : true
+                        }
+                    >
+                        Sell
+                    </button>
             </td>
             <td className='wlsi-td-rem' onClick={removeStock}>
                 <i className="fa-solid fa-square-xmark fa-lg"></i>
