@@ -18,7 +18,6 @@ export default function AccountButton() {
     const amRef = useRef();
 
     const openForm = () => {
-        console.log('openform:', renderAmDiv)
         amDiv.style.height = '130px';
         amDiv.style.width = '340px';
         amDiv.style.border = '1px solid #00da86';
@@ -28,7 +27,6 @@ export default function AccountButton() {
     }
 
     const closeForm = (e) => {
-        console.log('closeform:', renderAmDiv)
         setRenderAmDiv(false);
         amDiv.style.height = '0px';
         amDiv.style.width = '0px';
@@ -37,7 +35,6 @@ export default function AccountButton() {
 
     const amBtnClick = (e) => {
         e.stopPropagation();
-        console.log('amBtnClick', renderAmDiv)
         !renderAmDiv ? openForm() : closeForm()
     }
 
@@ -47,7 +44,6 @@ export default function AccountButton() {
             amDiv.style.height = '0px';
             amDiv.style.width = '0px';
         }
-        console.log('amRef loaded:', amRef)
 
     }, [amRef]);
 

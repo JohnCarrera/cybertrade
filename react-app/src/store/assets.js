@@ -100,7 +100,6 @@ export const removeAsset = (id) => async (dispatch) => {
 
     if(res.ok) {
         const asset = await res.json();
-        console.log('------------------------',asset);
         dispatch(remove(asset));
         return res;
     }

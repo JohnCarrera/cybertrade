@@ -9,7 +9,6 @@ export default function Dropdown({ editForm, wlName, setWlName, wlSubmit}) {
     const closeMenu = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('closing menu');
         if (dropDownMenu.current && !dropDownMenu.current.contains(e.target)){
             setMenuState(false);
             document.removeEventListener('click', closeMenu);
@@ -22,8 +21,6 @@ export default function Dropdown({ editForm, wlName, setWlName, wlSubmit}) {
 
         if (!menuState){
             setMenuState(true);
-            console.log(menuState);
-            console.log(dropDownMenu)
             document.addEventListener('click', closeMenu)
         } else {
             setMenuState(false);

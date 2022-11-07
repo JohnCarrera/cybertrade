@@ -11,10 +11,8 @@ export default function SessionLinks() {
 
     useEffect(() => {
         if (user) {
-            console.log('usertrue:', user)
             setLinks(<AccountButton />)
         } else {
-            console.log('userFalse:', user)
             setLinks(
                 <div className='sl-top-right'>
                     <Link to='/login' className='sl-link-wrap'>

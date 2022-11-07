@@ -19,8 +19,6 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
 
     const buyClick = async e => {
         e.preventDefault()
-        console.log('balance:', balance)
-        console.log('newBalance:', parseFloat(balance - (qty * price)))
 
         dispatch(updateCashBalance(balance - (qty * price)))
 
@@ -42,11 +40,9 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
             }
 
             if (asset) {
-                console.log('assetTrue:', asset)
                 assetData.quantity = Number(asset.quantity) + Number(qty)
                 dispatch(updateAsset(asset.id, assetData))
             } else {
-                console.log('assetFalse:', asset)
                 assetData.quantity = Number(qty)
                 dispatch(addAsset(assetData))
             }
@@ -58,7 +54,6 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
 
         dispatch(updateCashBalance(balance + (qty * price)))
 
-        console.log('balance!:', balance)
 
         const data = {
             symbol: stock.symbol,
@@ -81,7 +76,6 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                 if (Number(asset.quantity) - Number(qty) <= 0) {
                     dispatch(removeAsset(asset.id))
                 } else {
-                    console.log('sellassetTrue:', asset)
                     assetData.quantity = Number(asset.quantity) - Number(qty)
                     dispatch(updateAsset(asset.id, assetData))
                 }

@@ -22,7 +22,6 @@ export default function Dashboard({stocks}) {
 
         return Object.values(assets).reduce((a, x) => {
             if (x.symbol !== '_CASH') {
-                console.log(x, a)
                 a += x.value * x.quantity;
                 return a;
             }

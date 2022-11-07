@@ -22,25 +22,20 @@ export default function SearchBar() {
     }, [dispatch])
 
     const openForm = () => {
-        console.log('opening', renderSrDiv)
         // setRenderSrDiv(true);
         srDiv.style.height = 'fit-content'
         srDiv.style.border = '1px solid #00da86'
         if (!renderSrDiv) {
             setRenderSrDiv(true);
-            console.log('cond', renderSrDiv)
             document.addEventListener('click', closeForm)
         }
-        console.log(renderSrDiv)
     }
 
     const closeForm = (e) => {
-        console.log('closing', renderSrDiv)
         setRenderSrDiv(false);
         srDiv.style.height = '0px';
         srDiv.style.border = 'none'
         document.removeEventListener('click', closeForm);
-        console.log(renderSrDiv)
     }
 
     const srClickHandler = (e) => {
@@ -58,14 +53,9 @@ export default function SearchBar() {
             srDiv.style.height = '0px';
             srDiv.style.border = 'none'
         }
-
-        console.log(renderSrDiv, srDiv, srMenuRef)
     }, [srMenuRef]);
 
     useEffect(() => {
-        console.log(renderSrDiv, srDiv, srMenuRef)
-
-
         if (searchInput) {
 
             if (!renderSrDiv) openForm()
@@ -77,7 +67,6 @@ export default function SearchBar() {
                         || stock.name.toLowerCase().includes(searchInput.toLowerCase())
                     }
                 })
-                console.log(sr)
                 setSearchResults(sr)
             }
 

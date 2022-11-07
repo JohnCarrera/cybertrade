@@ -3,8 +3,9 @@
     top: 64px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
-    overflow: hidden;
+    height: 1200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     box-sizing: border-box;
     padding-top: 50px;
     display: flex;

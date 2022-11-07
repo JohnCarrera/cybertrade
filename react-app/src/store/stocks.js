@@ -58,15 +58,12 @@ export const getSingleStock = (id) => async (dispatch) => {
 }
 
 export const updateStockPrices = () => async (dispatch) => {
-    console.log('updating stock prices');
     const res = await fetch('/data', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
     });
-
-    console.log('res:', res)
 
     if(res.ok) {
         const prices = await res.json();
@@ -83,8 +80,6 @@ export const startDataStream = (id) => async (dispatch) => {
             'Content-Type': 'application/json'
         },
     });
-
-    console.log('starting stream')
 
     if(res.ok) {
         const allStocks = await res.json();
@@ -129,8 +124,6 @@ const initialState = {
 export const stockReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL:
-            console.log(state)
-            console.log(action.allStocks)
             return {...state, allStocks: action.allStocks}
         case LOAD_ONE:
             return {...state, singleStock: action.singleStock}
