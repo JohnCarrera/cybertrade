@@ -65,14 +65,20 @@
     border-radius: 4px;
 }
 
-.sd-add-btn:hover{
+.sd-add-btn:hover:enabled{
     color:#00da86;
     background-color: #0b2011;
     cursor: pointer;
 }
 
-.sd-add-btn:active{
+.sd-add-btn:active:enabled{
     transform: scale(.9);
+}
+
+.sd-add-btn:disabled{
+    color:white;
+    background-color: gray;
+    border: 1px solid darkgray
 }
 
 .sd-sel-wl{

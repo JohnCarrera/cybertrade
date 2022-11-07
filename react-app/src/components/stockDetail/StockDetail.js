@@ -43,7 +43,9 @@ export default function StockDetail({ stocks }) {
     const addToWlSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dispatch(addStockToWatchlist(selectedWL, symbol))
+        if (selectedWL && selectedWL !== 'none') {
+            dispatch(addStockToWatchlist(selectedWL, symbol))
+        }
     }
 
     return (stock &&
@@ -64,7 +66,7 @@ export default function StockDetail({ stocks }) {
                                 value={selectedWL}
                                 onChange={(e) => setSelectedWL(e.target.value)}
                             >
-                                <option value='' disabled>Watchlist</option>
+                                <option value='none'>Watchlist</option>
                                 {watchlists &&
                                     Object.values(watchlists).map((wl) =>
                                         <option
@@ -79,7 +81,7 @@ export default function StockDetail({ stocks }) {
                             <button
                                 className='sd-add-btn'
                                 type='submit'
-                            // disabled={selectedWL !== 'Watchlist'}
+                                disabled={selectedWL === '' || selectedWL === 'none'}
                             >
                                 Add</button>
                         </form>
@@ -339,7 +341,7 @@ export default function StockDetail({ stocks }) {
                 <WatchlistPanel />
             </div>
         </div>
-            // {/* <div className='bot-padding'></div>
-            // </div> */}
+        // {/* <div className='bot-padding'></div>
+        // </div> */}
     )
 }
