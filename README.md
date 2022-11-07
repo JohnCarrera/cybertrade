@@ -2,6 +2,8 @@
 
 live site: https://cyber-trade.herokuapp.com
 
+Cybertrade is a cyber-themed clone of the classic online stock trading platform. It takes it's functionality and layout from many of the different sites out there but the styling is all original. within this app, users can create an account then view their account stats on the dashboard. Users can also buy and sell stocks through the watchlist feature. 
+
 
 ## Wiki Links
 
@@ -36,9 +38,9 @@ live site: https://cyber-trade.herokuapp.com
 
 # Road Map
 
-- Watchlists
-- Live feed data
-- recurring tasks
+- Live price data
+- Additional buy/sell buttons on stock detail pages
+- live api data for stock detail
 
 
 # Getting Started 
@@ -54,10 +56,66 @@ live site: https://cyber-trade.herokuapp.com
 # Features
 
 
-## Custom 404
+## Splash Page 
 
-Lost? Our custom 404 page will guide you back to the right place.
+On the splash page, users can login, signup, or follow the dynamic links back to the dashboard.
 
+![image](https://user-images.githubusercontent.com/105324675/200205503-8cb7f756-9a9b-47e6-919c-94cfb51b1f48.png)
+
+
+## Login
+
+Login in as a demo user or with your credentials from an account you've created
+
+![image](https://user-images.githubusercontent.com/105324675/200205557-bb6db682-974d-4d5c-9054-6be4ee00e713.png)
+
+
+## Signup
+
+Sign up a new account 
+
+![image](https://user-images.githubusercontent.com/105324675/200205573-b672a750-f355-4314-9604-8bf2a263a6b5.png)
+
+
+## Account Dashboard
+
+View your total assets, account value, asset details and transaction history via a tabbed interface
+
+![image](https://user-images.githubusercontent.com/105324675/200205621-f9a15bda-f3d7-47bd-a682-024abf4d527d.png)
+
+## Transactions
+
+View your transaction history
+
+![image](https://user-images.githubusercontent.com/105324675/200205741-3bf2b412-9cca-4df2-9c3d-83b412a34263.png)
+
+
+## Assets
+
+View your currently held assets
+
+![image](https://user-images.githubusercontent.com/105324675/200205703-ad853826-a9fd-46f2-8ee5-a6f57800e270.png)
+
+
+## Watchlists
+
+Create, Edit and manage stocks in watchlists.
+
+![image](https://user-images.githubusercontent.com/105324675/200205794-9fbf3aab-470d-4dc4-adfb-55d12feb58c5.png)
+
+
+## Stock Detail Pages
+
+Reasearch stocks with these stock detail pages, populated with real data!
+
+![image](https://user-images.githubusercontent.com/105324675/200205830-a3c4c56d-f258-4fce-a688-0eb286fe0a45.png)
+
+
+## Custom stock search
+
+Search for stocks with the custom stock search bar, styled after a retro terminal menu!
+
+![image](https://user-images.githubusercontent.com/105324675/200205844-fc8648ce-077c-4756-ae2b-bfeaf70df2e8.png)
 
 
 
