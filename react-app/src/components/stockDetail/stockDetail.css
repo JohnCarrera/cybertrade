@@ -6,7 +6,7 @@
     justify-content: center;
     padding-top: 50px;
     display: flex;
-    height: 1500px;
+    height: 1300px;
     flex-direction: row;
     background-color: #0d0a1c;
     /* align-items: center; */
@@ -21,13 +21,13 @@
 }
 
 .sd-main-lf{
-    box-sizing: border-boxkk;
+    box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-right: 100px;
-    margin-left: 100px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .sd-add-to-wl-grp{
@@ -291,3 +291,7 @@
     background-color: #0d0a1c;
     height: 120%;
   } */
+
+  .sd-main-rt{
+    margin-left: 20px;
+  }

@@ -1,6 +1,7 @@
 .dbip-main-info{
     height: 600px;
     width : 800px;
+    height: 400px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;

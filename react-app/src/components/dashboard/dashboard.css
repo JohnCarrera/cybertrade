@@ -45,7 +45,8 @@
 }
 
 .db-main-rt-img-block{
-    height: 320px;
+    height: 400px;
+    min-height: 400px;
     width : 800px;
     margin-top: 30px;
     display: flex;
@@ -69,6 +70,6 @@
     border-radius: 4px;
 }
 
-
 .db-main-lf{
+    height: 600px;
 }

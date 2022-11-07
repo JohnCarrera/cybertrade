@@ -139,7 +139,7 @@ export default function WLStockItem({ stock, price, wlid, balance, asset }) {
                                 : true
                         }
                     >
-                        Sell
+                       {'Sell'}
                     </button>
             </td>
             <td className='wlsi-td-rem' onClick={removeStock}>

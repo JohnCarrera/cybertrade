@@ -335,7 +335,7 @@ export default function StockDetail({ stocks }) {
                 </div>
             </div>
 
-            <div className='sd-main-lf'>
+            <div className='sd-main-rt'>
                 <WatchlistPanel />
             </div>
         </div>

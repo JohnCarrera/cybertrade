@@ -13,10 +13,10 @@
 .wlsi-buy{
     background-color: #0b2011e6;
     border: 1px solid #00da86;
-
 }
 
 .wlsi-sell{
+    text-align: center;
     background-color: darkred;
     border: 1px solid red;
 }
@@ -29,12 +29,14 @@
     color: white;
     cursor: pointer;
     border-radius: 2px;
+    padding: 0px;
 }
 
 .wlsi-ab:disabled{
     border: 1px solid darkgray;
     color: darkgray;
     background-color: gray;
+    cursor:default;
 }
 
 .wlsi-ab:active:enabled{
