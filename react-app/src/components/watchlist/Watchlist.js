@@ -84,6 +84,7 @@ export default function Watchlist({ wl, stocks, prices, balance, assets }) {
                         type='text'
                         value={wlName}
                         required={true}
+                        maxLength={30}
                         onChange={(e) => setWlName(e.target.value)}
                     />
                 </form>
