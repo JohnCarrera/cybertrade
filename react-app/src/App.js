@@ -19,6 +19,8 @@ import { authenticate } from './store/session';
 import { updateStockPrices, startDataStream } from './store/stocks';
 import './app.css'
 
+//heroku redeploy
+
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
